@@ -36,13 +36,13 @@ b. bmap[0] 的bucket内，keys 已经装满8个，所以使用overflow 指向新
 
 c. 插入: 使用hash函数计算出hash值，低8位用来查找对应的bucket，高8位用来在topbits内通过o(1)时间复杂度比较出对应key是否存在
 
-![图片](./IMG/map.md/b9c3b1c8.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/67692c2b23152dbafd5f313645c95610.png)
 
 
 
 
 4.  桶内的key存放按照key...key...value...value各自存放。好处：key和value类型不一样时，可以减少padding损耗（内存对齐）。
-![图片](./IMG/map.md/bb00a2ec.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/b08d98123b8f7c7e68ae3b815db6a91d.png)
 
 
 5. map处于扩容中间态时的遍历:
@@ -50,7 +50,7 @@ c. 插入: 使用hash函数计算出hash值，低8位用来查找对应的bucket
 
 B=1    扩容==>   B=2
 
-![图片](./IMG/map.md/2be4f1e7.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/0fc666ec4de9a548b052331b31144a5f.png)
 
 
 a. 假设经过初始化后，startBucket = 3，offset = 2。于是，遍历的起点将是 3 号 bucket 的 2 号 cell。

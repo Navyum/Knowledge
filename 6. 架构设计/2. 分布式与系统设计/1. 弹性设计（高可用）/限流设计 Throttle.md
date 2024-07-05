@@ -27,17 +27,17 @@
 * 队列：
     普通队列：流速波动，处理速度固定，类似FIFO
 
-![图片](./IMG/限流设计%20Throttle.md/b60bb38a.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ba1d2759a30008dd923da3782b946eb9.png)
 
 
     优先队列： 先处理高优先级，再处理低优先级。缺点：低优先级可能会饿死
 
-![图片](./IMG/限流设计%20Throttle.md/32aaba4d.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/f5c5b2de935e7f5fda65ea42ba511db5.png)
 
 
     带时间片的权重队列：分配不同的处理时间到不同的队列。即优先队列加上时间片概念。
 
-![图片](./IMG/限流设计%20Throttle.md/32aaba4d.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/f5c5b2de935e7f5fda65ea42ba511db5.png)
 
 
     队列算法的缺点：队列长度难以控制。长度需要跟系统的吞吐挂钩。一旦队列过长，整个服务可能提前挂掉。这类模型建议使用pull方式，而不是push。
@@ -47,7 +47,7 @@
 
     当请求过多时，队列就会开始积压请求，如果队列满了，就会开拒绝请求。e.g TCP滑动窗口
 
-![图片](./IMG/限流设计%20Throttle.md/e65acd88.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/beb3bfc8507fe932898ad93230e35b60.png)
 
 
 * 令牌桶：
@@ -55,7 +55,7 @@
 
     在processor处理能力不受限制的情况下，漏斗算法会以一个稳定的速度转发；而令牌桶算法平时流量不大时在“攒钱”，流量大时，可以一次发出队列里有的请求，而后就受到令牌桶的流控限制。
 
-![图片](./IMG/限流设计%20Throttle.md/df20804e.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/10e1bc4f5e14bbb7e086b99e4b6549ef.png)
 
 
 

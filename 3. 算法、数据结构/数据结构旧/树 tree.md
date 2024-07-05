@@ -23,14 +23,14 @@
 ADT：
 
 
-![图片](./IMG/树%20tree.md/d7f45d49.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/0c1d6fca3be67763260ea6453ca58925.png)
 
 
 数据结构：
 
 
-![图片](./IMG/树%20tree.md/332fcd06.png)
-![图片](./IMG/树%20tree.md/df5c5447.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/e8180d0918ea605aa71b089543ec47a6.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/af0fab9904c983df786b7dbb22431929.png)
 
 
 root的parent设为-1
@@ -39,25 +39,25 @@ root的parent设为-1
 孩子表示法（孩子数量不确定）：类似哈希表
 
 
-![图片](./IMG/树%20tree.md/61c08914.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/55d0ddf61eed395fdbf62cb35efcf304.png)
 
 
 包括孩子节点，表头，树结构
 
 
-![图片](./IMG/树%20tree.md/bf5812de.png)
-![图片](./IMG/树%20tree.md/1a07482f.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/faf14ddbfe8d7d3fc505ec51afd841d9.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/3a7dab9a6e223189092dba03adaa499e.png)
 
 
 孩子兄弟表示法：（二叉树）
 
 
-![图片](./IMG/树%20tree.md/855bcc74.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/4092e54e2115e76227d371528d76ae64.png)
 
 
 节点：
 
 
-![图片](./IMG/树%20tree.md/09ac30c7.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/51642efd4b4ebcdbc86766dc363f8615.png)
 
 

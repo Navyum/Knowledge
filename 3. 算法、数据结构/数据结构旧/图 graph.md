@@ -20,15 +20,15 @@
         * HFSTaverse（G）广度优先遍历
 * end ADT
 *     * 数据存储结构：邻接矩阵（顺序存储）
-    * ![图片](./IMG/图%20graph.md/fe1afde6.png)
+    * ![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/cbe71fe47c852b9b47f41234d64af593.png)
 
         * 图解：
-![图片](./IMG/图%20graph.md/8ecd781f.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/14705fead5f77f462020750660afbd34.png)
 
-        * 邻接表：（链式存储）![图片](./IMG/图%20graph.md/da3949f2.png)
+        * 邻接表：（链式存储）![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/8e6fdc8b9562ea26b2b2ae62f7091c63.png)
 
             * 图解：（无向图）
-![图片](./IMG/图%20graph.md/f43aae96.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/0d4aae052d6a71eea0a53abfcc0b3c87.png)
 
     * 最小生成树：含义：构造连通网的最小代价生成树称为最小生成树
             * 构造算法：1.Prim算法

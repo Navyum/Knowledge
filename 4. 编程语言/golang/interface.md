@@ -46,7 +46,7 @@ type interfacetype struct {
 ```
 
 5.  iface内存模型：
-![图片](./IMG/interface.md/fe01a863.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ea9c54d9bf3b37ad38aa5543368ad439.png)
 
 
 

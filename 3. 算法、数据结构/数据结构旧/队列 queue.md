@@ -13,18 +13,18 @@
     * QueueLength (Q)
 * end ADT
         * 顺序存储：数据存储结构
-![图片](./IMG/队列%20queue.md/009ecd77.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/4210c57ea0b9781efdb48755936a77ab.png)
 
         * 循环队列定义：队列的头尾相接的顺序存储结构
             * 顺序存储结构：
-![图片](./IMG/队列%20queue.md/009ecd77.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/4210c57ea0b9781efdb48755936a77ab.png)
 
             * 图解：
-![图片](./IMG/队列%20queue.md/32ffcb12.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/91a544a9d7d5fe99e3db1c3ef9f13b54.png)
 
         * 链式存储数据存储结构：
-![图片](./IMG/队列%20queue.md/08d5c92a.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/e0ee709eeab6c7c9ba83921db9fa7202.png)
 
         * 图解：
-![图片](./IMG/队列%20queue.md/deaef1a0.png)
+![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/71aba9b42642ccb779cfbc015afc6a14.png)
 
