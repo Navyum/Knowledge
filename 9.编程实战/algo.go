@@ -61,10 +61,82 @@ func InsertSort(array []int) {
 	fmt.Println(array)
 }
 
+//二分查找target元素，有则返回target索引，没有则返回 -1
+func BinarySearch(array []int, target int) int {
+	i, j := 0, len(array)-1
+
+	for i <= j {
+		mid := (j + i) / 2
+
+		if target < array[mid] {
+			j = mid - 1
+		} else if target > array[mid] {
+			i = mid + 1
+		} else {
+			return mid
+		}
+	}
+
+	return -1
+
+}
+
+//不存在重复元素，寻找target插入点
+func BinarySearchInsert(array []int, target int) int {
+	i, j := 0, len(array)-1
+
+	var mid int
+	for i <= j {
+		// 计算中位数
+		mid = (j + i) / 2
+
+		if target < array[mid] {
+			j = mid - 1
+		} else if target > array[mid] {
+			i = mid + 1
+
+			// 元素相等，则该位置为插入点
+		} else {
+			return mid
+		}
+	}
+
+	//返回i的位置
+	fmt.Println(i, j)
+	return i
+
+}
+
+// 存在重复元素时，寻找target插入点
+func BinarySearchInsertMulti(array []int, target int) int {
+	i, j := 0, len(array)-1
+
+	var mid int
+	for i <= j {
+		mid = (j + i) / 2
+		fmt.Println(i, j, mid)
+		if target < array[mid] {
+			j = mid - 1
+		} else if target > array[mid] {
+			i = mid + 1
+		} else {
+			j = mid - 1
+		}
+	}
+
+	return i
+
+}
+
 func main() {
-	array := []int{7, 4, 3, 3, 6, 9, 1, 5}
-	fmt.Println("origin:", array)
+	//array := []int{7, 4, 3, 3, 6, 9, 1, 5}
+	//fmt.Println("origin:", array)
 	//BubbleSort(array)
 	//SelectSort(array)
-	InsertSort(array)
+	//InsertSort(array)
+
+	array := []int{1, 3, 4, 5, 8, 10, 28}
+	fmt.Println("origin:", array)
+	i := BinarySearchInsert(array, 2)
+	fmt.Println(i)
 }
