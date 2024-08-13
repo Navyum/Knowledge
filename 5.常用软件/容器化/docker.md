@@ -264,6 +264,7 @@ $ docker inspect --format '{{join .Args " , "}}'
             * named context 从自定义上下文拷贝
             * image 从镜像拷贝数据
         * 使用COPY --from 时，路径必须是绝对路径
+
 * **CMD**
     * 容器启动时，定义默认参数和选项；镜像构建时不会起任何作用
     ```dockerfile
@@ -281,8 +282,9 @@ $ docker inspect --format '{{join .Args " , "}}'
         * 推荐用法 exec form形式作为ENTRYPOINT 默认参数
         * shell 模式，默认使用shell，存在字符串修改问题，例如转义、空格等
         * exec 模式，可以自己定义程序，对字符串参数处理较好，仍需要处理好转义问题
+
 * **ENTRYPOINT**
-    * 容器启动时，定义启动命令；镜像构建过程中不会起任何作用。
+    * 容器启动时，定义启动命令；镜像构建过程中不会起任何作用。（多阶段构建中可以有多个ENTRYPOINT）
     ```dockerfile
     # shell form：
     ENTRYPOINT command param1 param2
@@ -349,3 +351,39 @@ $ docker inspect --format '{{join .Args " , "}}'
     HEALTHCHECK [OPTIONS] CMD command
     ```
 #### 多阶段构建
+* 作用：
+    * 通过 docker build --target=<stage_name>，用同一个dockerfile，构建某阶段的镜像
+    * 通过 FROM scratch，利用阶段生成的二进制文件，降低最终镜像大小
+    * buildx通过buildkit构建时，只构建依赖的阶段；传统build会构建所有阶段；
+* 使用：
+    * 给stage定义别名： FROM <base_image>:<tag> AS <name>
+    * 通过COPY使用外部镜像的文件 COPY --from=nginx:latest /etc/nginx/nginx.conf /nginx.conf
+    * 通过COPY使用前面阶段的文件 COPY --from=pre_stage result /src
+    * 构建指定的阶段：docker build -t IMAGE_NAME --target=stage_name .  // 从dockerfile构建stage_name对应阶段做为IMAGE_NAME镜像
+* 例子：
+    ```dockerfile
+    # syntax=docker/dockerfile:1
+    FROM golang:1.21-alpine AS base
+    WORKDIR /src
+    COPY go.mod go.sum /src/
+    RUN go mod download
+    COPY . .
+
+    # build client
+    FROM base AS build-client
+    RUN go build -o /bin/client ./cmd/client
+
+    # build server
+    FROM base AS build-server
+    RUN go build -o /bin/server ./cmd/server
+
+    # copy client binary to client image
+    FROM scratch AS client
+    COPY --from=build-client /bin/client /bin/
+    ENTRYPOINT [ "/bin/client" ]
+
+    # copy server binary to server image
+    FROM scratch AS server
+    COPY --from=build-server /bin/server /bin/
+    ENTRYPOINT [ "/bin/server" ]
+    ```
