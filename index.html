@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/dark.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-top-banner-plugin@latest/dist/style.css" />
   </head>
   <body>
     <div id="app"></div>
@@ -23,21 +24,29 @@
         },
         search: {
           maxAge: 86400000, // Expiration time, the default one day
-          paths: 'auto', // or 'auto'
           placeholder: '开始搜索',
-          noData: '啥也没有!'
+          noData: '啥也没有!',
+          depth: 6
         },
         copyCode: {
           buttonText : '点击复制',
           errorText  : '错误',
           successText: '复制成功'
         },
+        footer: {
+          copy: '<span>Navyum &copy; 2024</span>',
+          auth: '赣ICP备2024',
+          pre: '<hr/>',
+          style: 'text-align: right;',
+          class: 'className'
+        },
   	loadNavbar: true,  // 默认加载配置文件 _navbar.md
         onlyCover: true,
-        
+        disqus: 'shortname',
       };
     </script>
-    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+   
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
 
   <!-- 搜索 -->
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
@@ -57,6 +66,10 @@
   <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script> -->
+  <!-- 顶部广告-->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-top-banner-plugin@latest/dist/index.js"></script>
 
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/disqus.min.js"></script>
+  
   </body>
 </html>
