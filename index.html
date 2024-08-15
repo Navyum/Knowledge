@@ -1,14 +1,65 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>学习</title></head><body><h1>学习</h1><ul>
-<li><a href="1.计算机网络">1.计算机网络</a></li>
-<li><a href="2.操作系统">2.操作系统</a></li>
-<li><a href="3.算法、数据结构">3.算法、数据结构</a></li>
-<li><a href="4.编程语言">4.编程语言</a></li>
-<li><a href="5.常用软件">5.常用软件</a></li>
-<li><a href="6.架构设计">6.架构设计</a></li>
-<li><a href="7.大模型LLM">7.大模型LLM</a></li>
-<li><a href="8.问答">8.问答</a></li>
-<li><a href="9.编程实战">9.编程实战</a></li>
-<li><a href="README.md">README.md</a></li>
-<li><a href="Ready4Interview.md">Ready4Interview.md</a></li>
-<li><a href="a.sh">a.sh</a></li>
-</ul></body></html>
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/docsify@4/themes/vue.css"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      window.$docsify = {
+        name: 'Navyum\'s Blog',
+        loadSidebar: true,
+        subMaxLevel: 3,
+        count:{
+          countable:true,
+          fontsize:'0.9em',
+          color:'rgb(90,90,90)',
+          language:'chinese'
+        },
+        search: {
+          maxAge: 86400000, // Expiration time, the default one day
+          paths: 'auto', // or 'auto'
+          placeholder: '开始搜索',
+          noData: '啥也没有!'
+        },
+        copyCode: {
+          buttonText : '点击复制',
+          errorText  : '错误',
+          successText: '复制成功'
+        },
+  	loadNavbar: true,  // 默认加载配置文件 _navbar.md
+        onlyCover: true,
+        
+      };
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+
+  <!-- 搜索 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- 图片放大缩小支持 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- 拷贝文字内容 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- 字数插件 -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
+  <!-- 分页导航 -->
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- 侧边栏扩展与折叠 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <!-- 页脚信息 -->
+  <script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+  <!-- GitTalk评论 -->
+  <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script> -->
+
+  </body>
+</html>
