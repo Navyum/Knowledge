@@ -68,7 +68,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with: 
+          INPUT_PATH: .
       
       - name: Configure Pages
         uses: actions/configure-pages@v4
