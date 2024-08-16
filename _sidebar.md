@@ -496,7 +496,3 @@
 - 10.面试经验
 
   - [Ready4Interview](10.面试经验/Ready4Interview.md)
-
-- [README](README.md)
-
-- [__coverpage](__coverpage.md)
