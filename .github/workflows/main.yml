@@ -23,7 +23,7 @@ jobs:
         run: npm install minimist
 
       - name: Make Sidebar
-        run: node gen_sidebar.js
+        run: node gen_sidebar.js --dir=./ --ignore=true 
 
       - name: Commit files
         run: |
@@ -64,6 +64,9 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
+      - name: Configure Pages
+        uses: actions/configure-pages@v4
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
