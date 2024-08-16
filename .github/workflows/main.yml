@@ -36,7 +36,7 @@ jobs:
           
           status=$(git status --porcelain)
           if [ -z "$status" ]; then
-            echo "There are changes"
+            echo " There are no changes!!! "
           else
             git add -A
             git commit -m "github action auto update _sidebar.md"
