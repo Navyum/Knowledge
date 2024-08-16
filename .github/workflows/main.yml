@@ -72,7 +72,7 @@ jobs:
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
         with: 
-          INPUT_PATH: .
+          path: .
       
       - name: Configure Pages
         uses: actions/configure-pages@v4
