@@ -175,6 +175,14 @@
 
       - [3.搜索树查找](03.算法、数据结构/算法/3.搜索/3.搜索树查找.md)
 
+    - 4.查找
+
+      - 散列表查找
+
+      - 树结构查找
+
+      - 线性表查找
+
     - 5.字符串匹配
 
       - [AC自动机](03.算法、数据结构/算法/5.字符串匹配/AC自动机.md)
@@ -192,6 +200,10 @@
       - [概率分析](03.算法、数据结构/算法/6.其他/概率分析.md)
 
       - [递归](03.算法、数据结构/算法/6.其他/递归.md)
+
+    - 7.加密算法
+
+    - 8.摘要算法
 
 - 04.编程语言
 
@@ -270,6 +282,8 @@
   - Python
 
     - [README](04.编程语言/python/README.md)
+
+  - Shell
 
 - 05.常用软件
 
@@ -520,15 +534,3 @@
   - [Ready4Interview](10.面试经验/Ready4Interview.md)
 
 - [README](README.md)
-
-- Node modules
-
-- Minimist
-
-- [CHANGELOG](node_modules/minimist/CHANGELOG.md)
-
-- [README](node_modules/minimist/README.md)
-
-- Example
-
-- Test

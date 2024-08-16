@@ -43,7 +43,7 @@ function genSidebar(cwdPath, sidebarPath) {
   let test = 0;
 
   const files = getFiles(cwdPath);
-  console.log("files---> :" ,JSON.stringify(files));
+  //console.log("files---> :" ,JSON.stringify(files));
   getMdStream(files);
 
   fs.writeFile(sidebarPath, tree, 'utf8', err => {
@@ -75,9 +75,10 @@ function getFiles (dir) {
       //var subPath = path.resolve(dir, file) //拼接为绝对路径
       var subPath   = path.join(dir, file) //拼接为相对路径
       var stats     = fs.statSync(subPath) //拿到文件信息对象
+
       // 必须过滤掉node_modules文件夹
       if (file != 'node_modules') {
-      mapDeep[file] = curIndex + 1
+        mapDeep[file] = curIndex + 1
 
         if (stats.isDirectory()) { //判断是否为文件夹类型
           return getMap(subPath, mapDeep[file]) //递归读取文件夹
@@ -110,7 +111,7 @@ function getFiles (dir) {
   
         //文件夹过滤,开头.隐藏文件夹
         //判断是否为文件夹类型
-        if (stats.isDirectory() && !file.startsWith('.')) { 
+        if (stats.isDirectory() && !file.startsWith('.') && file != "node_modules" ) { 
           return readdirs(subPath, file, file) //递归读取文件夹
         }
   
