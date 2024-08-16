@@ -25,10 +25,9 @@ jobs:
       - name: Make Sidebar
         run: |
            node gen_sidebar.js --dir=./ --ignore=true
-           touch _sidebar.md
         
       - name: Clean node modules
-        run: rm -rf node_modules
+        run: rm -rf node_modules && rm -rf package*
  
       - name: Commit files
         run: |
@@ -39,7 +38,7 @@ jobs:
           if [ -z "$status" ]; then
             echo "There are changes"
           else
-            git add _sidebar.md
+            git add -A
             git commit -m "github action auto update _sidebar.md"
           fi
           
