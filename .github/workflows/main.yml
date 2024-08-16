@@ -23,8 +23,13 @@ jobs:
         run: npm install minimist
 
       - name: Make Sidebar
-        run: node gen_sidebar.js --dir=./ --ignore=true 
-
+        run: |
+           node gen_sidebar.js --dir=./ --ignore=true
+           touch _sidebar.md
+        
+      - name: Clean node modules
+        run: rm -rf node_modules
+ 
       - name: Commit files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
