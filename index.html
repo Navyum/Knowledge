@@ -15,7 +15,15 @@
       window.$docsify = {
         name: 'Navyum\'s Blog',
         loadSidebar: true,
+        coverpage: true,
         subMaxLevel: 3,
+        loadNavbar: true,  // 默认加载配置文件 _navbar.md
+        notFoundPage: '_error.md',
+        alias : {
+         '/.*/_navbar.md': '/_navbar.md'
+        },
+        onlyCover: true,
+        relativePath: true,
         count:{
           countable:true,
           fontsize:'0.9em',
@@ -40,8 +48,6 @@
           style: 'text-align: right;',
           class: 'className'
         },
-  	loadNavbar: true,  // 默认加载配置文件 _navbar.md
-        onlyCover: true,
       };
     </script>
    
@@ -67,7 +73,18 @@
   <script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script> -->
   <!-- 顶部广告-->
   <script src="https://cdn.jsdelivr.net/npm/docsify-top-banner-plugin@latest/dist/index.js"></script>
+  <!-- 访问量统计 -->
+  <script async src="https://notebook.js.org/plugin/js/busuanzi.pure.mini.js"></script>
 
+  <!-- 谷歌分析 -->
+  <script src="https://notebook.js.org/plugin/js/ga.min.js"></script>
+
+  <!-- 实现离线化 -->
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('pwa.js')
+    }
+  </script>
   
   </body>
 </html>
