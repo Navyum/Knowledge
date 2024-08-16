@@ -12,6 +12,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: pnpm
+  
+      - name: Install depends
+        run: pnpm install minimist
 
       - name: Make Sidebar
         run: node gen_sidebar.js
