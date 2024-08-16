@@ -43,6 +43,7 @@ function genSidebar(cwdPath, sidebarPath) {
   let test = 0;
 
   const files = getFiles(cwdPath);
+  console.log("files---> :" ,JSON.stringify(files));
   getMdStream(files);
 
   fs.writeFile(sidebarPath, tree, 'utf8', err => {
@@ -74,10 +75,13 @@ function getFiles (dir) {
       //var subPath = path.resolve(dir, file) //拼接为绝对路径
       var subPath   = path.join(dir, file) //拼接为相对路径
       var stats     = fs.statSync(subPath) //拿到文件信息对象
+      // 必须过滤掉node_modules文件夹
+      if (file != 'node_modules') {
       mapDeep[file] = curIndex + 1
 
-      if (stats.isDirectory()) { //判断是否为文件夹类型
-        return getMap(subPath, mapDeep[file]) //递归读取文件夹
+        if (stats.isDirectory()) { //判断是否为文件夹类型
+          return getMap(subPath, mapDeep[file]) //递归读取文件夹
+        }
       }
 
     })
@@ -88,7 +92,6 @@ function getFiles (dir) {
 
   //深度遍历生成完整 mapDeep 对象
   function readdirs(dir, folderName, myroot) {
-    console.log("current", dir)
     //构造文件夹数据
     var result = {
       path: dir,
@@ -113,10 +116,6 @@ function getFiles (dir) {
   
         // 文件过滤,开头_的md文件
         // 仅输出.md文件类型文件的数据
-        if (ignoreFiles.indexOf(file) == 1) {
-          console.log("file ---> ", file)
-        }
-  
         if (path.extname(file) === '.md' && !file.startsWith('_') ) {
           const path =  subPath.replace(rootDir + '/', '');
           return {
@@ -165,7 +164,6 @@ function getMdStream(files) {
 
         }
 
-        console.log("tree", tree)
         // 深度遍历
         if (item.children) {
           getMdStream(item.children)
