@@ -25,6 +25,8 @@
 
   - [QA](01.计算机网络/QA.md)
 
+  - [README](01.计算机网络/README.md)
+
   - Pcap资料
 
 - 02.操作系统
@@ -68,6 +70,8 @@
   - [1.思维导图](03.算法、数据结构/1.思维导图.md)
 
   - [2.参考书籍](03.算法、数据结构/2.参考书籍.md)
+
+  - [README](03.算法、数据结构/README.md)
 
   - 数据结构
 
@@ -255,11 +259,41 @@
 
     - [类型转换和断言](04.编程语言/golang/类型转换和断言.md)
 
+  - Java
+
+    - [README](04.编程语言/java/README.md)
+
+  - Lua
+
+    - [README](04.编程语言/lua/README.md)
+
+  - Python
+
+    - [README](04.编程语言/python/README.md)
+
 - 05.常用软件
 
   - [0.学习路径](05.常用软件/0.学习路径.md)
 
+  - [README](05.常用软件/README.md)
+
   - 分布式协调、配置、服务发现
+
+    - Chubby
+
+      - [README](05.常用软件/分布式协调、配置、服务发现/chubby/README.md)
+
+    - Consul
+
+      - [README](05.常用软件/分布式协调、配置、服务发现/consul/README.md)
+
+    - Etcd
+
+      - [README](05.常用软件/分布式协调、配置、服务发现/etcd/README.md)
+
+    - Nacos
+
+      - [README](05.常用软件/分布式协调、配置、服务发现/nacos/README.md)
 
     - Zookeeper
 
@@ -321,6 +355,10 @@
 
       - [19.常见云数据库选型](05.常用软件/数据库/mysql/19.常见云数据库选型.md)
 
+    - Opensearch
+
+      - [README](05.常用软件/数据库/opensearch/README.md)
+
     - Redis
 
       - [01.数据类型、底层数据结构](05.常用软件/数据库/redis/01.数据类型、底层数据结构.md)
@@ -346,6 +384,10 @@
     - Kafka
 
       - [原理](05.常用软件/消息队列/kafka/原理.md)
+
+    - Nsq
+
+      - [README](05.常用软件/消息队列/nsq/README.md)
 
     - Rocketmq
 
@@ -439,6 +481,8 @@
 
     - [微服务、云原生](06.架构设计/05.微服务云原生/微服务、云原生.md)
 
+  - [README](06.架构设计/README.md)
+
   - [参考资料](06.架构设计/参考资料.md)
 
 - 07.大模型LLM
@@ -446,6 +490,24 @@
   - 00.概念
 
     - [概念](07.大模型LLM/00.概念/概念.md)
+
+  - 01.框架
+
+    - [README](07.大模型LLM/01.框架/README.md)
+
+  - 02.RAG
+
+    - [README](07.大模型LLM/02.RAG/README.md)
+
+  - 03.微调
+
+    - [README](07.大模型LLM/03.微调/README.md)
+
+  - 04.应用
+
+    - [README](07.大模型LLM/04.应用/README.md)
+
+  - [README](07.大模型LLM/README.md)
 
 - 08.问答
 

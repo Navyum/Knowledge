@@ -23,19 +23,22 @@ jobs:
         run: npm install minimist
 
       - name: Make Sidebar
-        run: node gen_sidebar.js --dir=./ --ignore=true 
-
+        run: |
+           node gen_sidebar.js --dir=./ --ignore=true
+        
+      - name: Clean node modules
+        run: rm -rf node_modules && rm -rf package*
+ 
       - name: Commit files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          git add _sidebar.md
-          
           status=$(git status --porcelain)
           if [ -z "$status" ]; then
-            echo "There are changes"
+            echo " There are no changes!!! "
           else
+            git add -A
             git commit -m "github action auto update _sidebar.md"
           fi
           
@@ -64,6 +67,13 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with: 
+          path: .
+      
       - name: Configure Pages
         uses: actions/configure-pages@v4
       
