@@ -14,5 +14,6 @@
 
 <br>
 
-[GitHub](https://github.com/Navyum/Knowledge)
+
 [开始阅读](/README.md)
+[GitHub](https://github.com/Navyum/Knowledge)
