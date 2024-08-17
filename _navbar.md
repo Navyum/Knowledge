@@ -1,4 +1,2 @@
--   [首页](/README.md)
--   [计算机网络](/01.计算机网络/)
--   [常用软件](/05.常用软件/)
--   [架构设计](/06.架构设计/)
+-   [<span class="iconfont icon-book3"></span> 首页](/README.md)
+-   [<span class="iconfont icon-wodeguanzhu"></span> 联系](/_ABOUT.md)
