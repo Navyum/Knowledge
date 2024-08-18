@@ -30,7 +30,8 @@ for file in ${files[@]}; do
   [[ ${ignore[@]/${file}/} != ${ignore[@]} ]] && continue
   echo $file
   echo ${file%.*}
-  encode=$(urlencode "${file%.*}")
+  #encode=$(urlencode "${file%.*}")
+  encode=$(urlencode "${file::-3}")
   link="$website_link/#/$encode"
   date=$(git log -1 --format="%ad" --date="iso-strict-local" -- $file)
   item="
