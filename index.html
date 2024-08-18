@@ -14,7 +14,8 @@
       name="Keywords"
       content="nginx, web, k8s, docker, openresty, mysql, redis, kafka, rocketmq, raft, paxos, middleware"
     />
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/wugenqiang/StaticRepo/images/favicon.ico">
+    <!-- https://cdn.jsdelivr.net/gh/wugenqiang/StaticRepo/images/favicon.ico -->
+    <link rel="icon" href="logo.ico">
     
 
     <!-- 支持 LaTex 语言 -->
@@ -38,7 +39,7 @@
     <div id="app">⏰ 加载中...</div>
     <script>
       window.$docsify = {
-        name: '<image src="./logo.svg" width="20%" >Navyum\'s Blog</image>',
+        name: '📖 Navyum\'s Blog',
         //repo: 'https://github.com/navyum/', // 关闭右上角小部件，容易误触跳转
         formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}', //变量显示文档更新日期
         auto2top: true, //切换页面后是否自动跳转到页面顶部
@@ -160,24 +161,17 @@
   <!--Live-2D看板娘模型 -->
   <script type="text/javascript">
 
-
+      //模型选项：hibiki/koharu/nico/shizuku/miku/hijiki/izumi ...
+      modelName="koharu"
+      
       //Live-2D看板娘模型
       L2Dwidget.init({
           model: {
-              //jsonpath控制显示那个小萝莉模型，下面这个就是我觉得最可爱的小萝莉模型 //hijiki  //izumi //shizuku //koharu
-
-        // 	小帅哥： https://unpkg.com/live2d-widget-model-chitose@1.0.5/assets/chitose.model.json
-        // 	萌娘：https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json 
-        // 	小可爱（女）：https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json 
-        // 	小可爱（男）：https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json
-        // 	初音：https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json
-
-              // hibiki/koharu/nico/shizuku
-              jsonPath: "https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json", //这里改模型，前面后面都要改
-              scale: 2,
+              jsonPath: "https://unpkg.com/live2d-widget-model-" + modelName + "@1.0.5/assets/" + modelName + ".model.json", //这里改模型，前面后面都要改
+              scale: 1,
           },
           dev: {
-             border: false
+             border: false  // 关闭外边框
           },
           display: {
               position: "right", //设置看板娘的上下左右位置
@@ -197,7 +191,7 @@
       });
   </script>
 
-   <!-- add here-->>
+  <!-- add new here -->
   
   </body>
 </html>
