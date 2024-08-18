@@ -7,24 +7,24 @@
     * 无法忽略掉嵌套结构体
     * 给它赋的值恰好等于默认空值,会被忽略
 * 补充：因为go的变量有默认值，int为0，会导致业务定义的正常值0不返回
- * 举例：
+* 举例：
 ```go
-type PdfResponse struct {
-	Ret  uint8    `json:"ret,omitempty"`
-	Data *RetData `json:"data,omitempty"`
-	Msg  string   `json:"msg"`
-}
+    type PdfResponse struct {
+        Ret  uint8    `json:"ret,omitempty"`
+        Data *RetData `json:"data,omitempty"`
+        Msg  string   `json:"msg"`
+    }
 
-resp := &PdfResponse{
-    Ret: 0️,
-    Msg: "success",
-    Data: &RetData{},
-}
+    resp := &PdfResponse{
+        Ret: 0️,
+        Msg: "success",
+        Data: &RetData{},
+    }
 
-c.JSON(http.StatusOK, resp)
+    c.JSON(http.StatusOK, resp)
 
-//result:
-//{"data":null,"msg":"success"}
+    //result:
+    //{"data":null,"msg":"success"}
 ```
 
 
@@ -32,9 +32,10 @@ c.JSON(http.StatusOK, resp)
 * 场景： 多个项目包，本地引用
 * 描述： 如果当前项目使用了其他gitlab的项目,可以将其下载到本地并使用replace进行替换
 * replace替换支持相对路径
-* ```
+```
   go.mod： 
-  replace gitlab.intsig.net/cs-server2/services/cs_proto => ../cs_proto ```
+  replace gitlab.intsig.net/cs-server2/services/cs_proto => ../cs_proto
+```
 
 ### protoc-go-inject-tag工具使用
 * 场景：protoc-gen-go 生成proto.go
