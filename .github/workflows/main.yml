@@ -28,6 +28,10 @@ jobs:
         
       - name: Clean node modules
         run: rm -rf node_modules && rm -rf package*
+
+      - name: Build Sitemap
+        run: |
+          ./sitemap.sh
  
       - name: Commit files
         run: |
@@ -39,7 +43,7 @@ jobs:
             echo " There are no changes!!! "
           else
             git add -A
-            git commit -m "github action auto update _sidebar.md"
+            git commit -m "Auto update _sidebar.md & sitemap.xml"
           fi
           
         shell: bash
