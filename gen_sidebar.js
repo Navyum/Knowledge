@@ -158,7 +158,7 @@ function getMdStream(files) {
 
         if (item.type === 'directory') {
           //前后带换行 os.EOL
-          tree += blankspace + '- ' + toCamelCase(item.title) + os.EOL + os.EOL
+          tree += blankspace + '- ' + '📁 ' + toCamelCase(item.title) + os.EOL 
 
         } else if (item.type === 'file') {
           //tree += os.EOL + blankspace + '- [' + item.name + '](' + item.path + ')' + os.EOL
