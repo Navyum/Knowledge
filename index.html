@@ -40,7 +40,7 @@
 
     <script>
       window.$docsify = {
-        name: '📖 Navyum\'s Blog',
+        name: '📖   Navyum\'s Blog',
         //repo: 'https://github.com/navyum/', // 关闭右上角小部件，容易误触跳转
         formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}', //变量显示文档更新日期
         auto2top: true, //切换页面后是否自动跳转到页面顶部
@@ -196,6 +196,32 @@
 
     <!-- 红心点击特效 -->
     <script src="//cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/click_heart.js"></script>
+
+    <!-- url连接包含中文时乱码解决方案>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+          $('input').bind('input propertychange', function () {
+            var inputVal = $(this).val();
+            if (inputVal) {
+                console.log("输入搜索内容：" + inputVal);
+                //必须后置回显h2标签，经测试延时100ms可以
+                setTimeout(function () {
+                    $('div.matching-post a h2').each(function (index, value) {
+                        var finalH2Text = decodeURI(value.innerText);
+                        if (finalH2Text.indexOf("/") > 0) {
+                            var textArr = finalH2Text.split("/");
+                            finalH2Text = textArr[textArr.length - 1];
+                            $(this).text(finalH2Text);
+                        }
+                    });
+                }, 100);
+            } else {
+                console.log("其他");
+            }
+          });
+        })
+    </script>
 
   
   </body>
