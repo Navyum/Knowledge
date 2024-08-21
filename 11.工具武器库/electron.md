@@ -46,6 +46,7 @@
             openssl x509 -in developerID_application.cer -inform DER -outform PEM -out developerID_application.pem
             openssl pkcs12 -export -inkey ios.key -in developerID_application.pem -out developerID_application.p12
             ```
+
 ### Electron 设置打包环境：
 * 本地构建：
     * 设置环境变量：
