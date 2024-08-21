@@ -1,4 +1,4 @@
-## electron 打包 mac程序：
+## electron 打包 mac程序环境配置：
 
 ### 需要准备的内容：
 1. appleid（账号）
