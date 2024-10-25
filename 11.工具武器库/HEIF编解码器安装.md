@@ -286,4 +286,10 @@ H.264/MPEG-4、H.265/HEVC、AVIF（AV1/AOM、dav1d）、H.266/VVC
 * [libvips安装问题](https://github.com/libvips/libvips/discussions/3173)
 * [libvip和libheif版本兼容问题：heif_writer callback returned a null error text (5.2001)](https://github.com/libvips/libvips/discussions/3856)
 * [libheif支持VVC相关讨论](https://github.com/strukturag/libheif/issues/519)
+* [手淘HEIF、AVIF技术演进](https://tech.taobao.org/news/fo1d1l)
+* [爱奇艺HEIF、AVIF技术演进](https://my.oschina.net/u/4484233/blog/11044121)
+* [字节跳动ImageX的HEIF技术演进](https://developer.volcengine.com/articles/7195758069530230840)
+
+
+
 
