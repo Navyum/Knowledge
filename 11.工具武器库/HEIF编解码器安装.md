@@ -284,15 +284,12 @@ H.264/MPEG-4、H.265/HEVC、AVIF（AV1/AOM、dav1d）、H.266/VVC
 
 ### 直接使用 Dockerfile、Image：
 * 环境： centos7
-* Github 地址：https://github.com/Navyum/heif-tools
+* Github 地址：[https://github.com/Navyum/heif-tools](https://github.com/Navyum/heif-tools)
 * heif：docker pull ghcr.io/navyum/heif-tools:heif-tool
 * vips：docker pull ghcr.io/navyum/heif-tools:vips-tool
 
 
-
-
-
-参考：
+### 参考：
 * [libvips安装问题](https://github.com/libvips/libvips/discussions/3173)
 * [libvip和libheif版本兼容问题：heif_writer callback returned a null error text (5.2001)](https://github.com/libvips/libvips/discussions/3856)
 * [libheif支持VVC相关讨论](https://github.com/strukturag/libheif/issues/519)
