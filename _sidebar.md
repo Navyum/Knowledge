@@ -265,4 +265,6 @@
   - [github_action](11.工具武器库/github_action.md)
   - [jsdeliver](11.工具武器库/jsdeliver.md)
   - [piclist](11.工具武器库/piclist.md)
+- 📁 12.个人思考
+  - [厚积薄发](12.个人思考/厚积薄发.md)
 - [README](README.md)
