@@ -16,12 +16,16 @@
 - [🌡️ 架构设计](06.架构设计/02.分布式与架构/01.分布式设计总纲.md)
 
 ## Large Language Model
-- [❌ 大模型LLM TODO](/README)
+- [🤖 大模型LLM](07.大模型LLM/00.概念/01.Transformer.md)
 
 ## Job Interview
 - [❌ 问答 TODO](/README)
 - [❌ 编程实战 TODO](/README)
 - [👩 面试经验](10.面试经验/Ready4Interview.md)
+- [🤔 个人思考](12.个人思考/职业规划.md)
+
+## Effective tools
+- [🔧 工具](11.工具武器库/electron.md)
 
 ## Reading Books
 - [📚 读书笔记](https://www.notion.so/navyum/1c42fcd1fefa4e948d8514761b2ab8c7?v=0ca5dc6ee29e4c2787dbd0f1055b4ed0)
