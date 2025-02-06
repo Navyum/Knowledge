@@ -256,6 +256,7 @@
     - [README](07.大模型LLM/03.微调/README.md)
   - 📁 04.应用
     - [README](07.大模型LLM/04.应用/README.md)
+    - [白嫖huggingface的API](07.大模型LLM/04.应用/白嫖huggingface的API.md)
   - [README](07.大模型LLM/README.md)
 - 📁 08.问答
   - [灵魂拷问](08.问答/灵魂拷问.md)
