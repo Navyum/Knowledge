@@ -13,5 +13,5 @@ jobs:
 
       - name: Sync to GitHub
         run: |
-          git remote add github https://${{ secrets.GITHUB_TOKEN }}@github.com/navyum/Knowledge.git
+          git remote add github https://${{ secrets.TOKEN_GITHUB }}@github.com/navyum/Knowledge.git
           git push --mirror github
