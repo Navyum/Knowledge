@@ -1,0 +1,17 @@
+name: Sync to GitHub
+on:
+  schedule:
+    - cron: '0 3 * * *'  # 每天凌晨3点执行
+  push:  # 可选：本地推送时也触发同步
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Sync to GitHub
+        run: |
+          git remote add github https://${{ secrets.GITHUB_TOKEN }}@github.com/navyum/Knowledge.git
+          git push --mirror github
