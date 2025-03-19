@@ -5,21 +5,14 @@ on:
   push:  # 可选：本地推送时也触发同步
 jobs:
   sync:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: https://gitea.com/actions/checkout@v3  # 改用Gitea官方checkout
+        uses: actions/checkout@v3
 
-      - name: Sync to GitHub
-        env:
-          GH_TOKEN: ${{ secrets.TOKEN_GITHUB }}
-        run: |
-          # 配置Git身份信息
-          git config --global user.email "actions@localhost"
-          git config --global user.name "Gitea Actions"
-          
-          # 强制更新远程仓库URL
-          git remote add github https://$GH_TOKEN@github.com/navyum/Knowledge.git || true
-          git remote set-url github https://$GH_TOKEN@github.com/navyum/Knowledge.git
-          
-          # 强制推送所有引用（含删除远端已删除的分支）
-          git push --mirror --force --prune github
+      - name: Push to GitHub
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN_GITHUB }}
+          repository: github.com/mavyum/Knowledge  # 替换为你的GitHub仓库地址
+          force: true
