@@ -3,25 +3,23 @@ on:
   schedule:
     - cron: '0 3 * * *'  # 每天凌晨3点执行
   push:  # 可选：本地推送时也触发同步
-
 jobs:
   sync:
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: https://gitea.com/actions/checkout@v3  # 使用Gitea官方checkout
+        uses: https://gitea.com/actions/checkout@v3  # 改用Gitea官方checkout
 
       - name: Sync to GitHub
         env:
           GH_TOKEN: ${{ secrets.TOKEN_GITHUB }}
         run: |
           # 配置Git身份信息
-          git config --global user.email "actions@gitea.com"
+          git config --global user.email "actions@localhost"
           git config --global user.name "Gitea Actions"
           
-          # 添加GitHub远程仓库（强制覆盖已存在的配置）
-          git remote add github https://github.com/navyum/Knowledge.git || true
+          # 强制更新远程仓库URL
+          git remote add github https://$GH_TOKEN@github.com/navyum/Knowledge.git || true
           git remote set-url github https://$GH_TOKEN@github.com/navyum/Knowledge.git
           
-          # 强制推送所有分支和标签
-          git push --force --mirror github
+          # 强制推送所有引用（含删除远端已删除的分支）
+          git push --mirror --force --prune github
