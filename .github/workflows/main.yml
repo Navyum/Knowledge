@@ -25,14 +25,14 @@ jobs:
 
       - name: Make Sidebar
         run: |
-           node gen_sidebar.js --dir=./ --ignore=true
+           node ./.website/gen_sidebar.js --dir=./ --outdir=./.website --ignore=true
         
       - name: Clean node modules
         run: rm -rf node_modules && rm -rf package*
 
       - name: Build Sitemap
         run: |
-          ./sitemap.sh
+          ./.website/sitemap.sh
  
       - name: Commit files
         run: |

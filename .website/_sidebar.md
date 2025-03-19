@@ -271,9 +271,16 @@
   - [github_action](11.工具武器库/github_action.md)
   - [jsdeliver](11.工具武器库/jsdeliver.md)
   - [mac系统生成icns图标](11.工具武器库/mac系统生成icns图标.md)
+  - [markdown高级技巧](11.工具武器库/markdown高级技巧.md)
+  - [paypal支付](11.工具武器库/paypal支付.md)
   - [piclist](11.工具武器库/piclist.md)
   - [白嫖huggingface的API](11.工具武器库/白嫖huggingface的API.md)
+  - 📁 问题分析
+    - [todo](11.工具武器库/问题分析/todo.md)
+    - [wireshark抓包](11.工具武器库/问题分析/wireshark抓包.md)
 - 📁 12.个人思考
   - [厚积薄发](12.个人思考/厚积薄发.md)
   - [职业规划](12.个人思考/职业规划.md)
+  - [职场方法论](12.个人思考/职场方法论.md)
+- 📁 13.Drawio流程图
 - [README](README.md)

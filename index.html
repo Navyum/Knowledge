@@ -27,7 +27,7 @@
       content="nginx, web, k8s, docker, openresty, mysql, redis, kafka, rocketmq, raft, paxos, middleware"
     />
     <!-- https://cdn.jsdelivr.net/gh/wugenqiang/StaticRepo/images/favicon.ico -->
-    <link rel="icon" href="logo.ico">
+    <link rel="icon" href=".website/logo.ico">
     
 
     <!-- 支持 LaTex 语言 -->
@@ -58,14 +58,15 @@
         auto2top: true, //切换页面后是否自动跳转到页面顶部
 
         //页面设置
-        loadSidebar: true,
-        coverpage: true,
+        loadSidebar: '.website/_sidebar.md',
+        coverpage: '.website/_coverpage.md',
         subMaxLevel: 2,   // sidebar 展示md TOC层级
-        loadNavbar: true,  // 默认加载配置文件 _navbar.md
+        loadNavbar: '.website/_navbar.md',
         notFoundPage: '_error.md',
 
         alias : {
-         '/.*/_navbar.md': '/_navbar.md'
+         '/.*/_navbar.md': '/.website/_navbar.md',
+         '/.*/_sidebar.md': '/.website/_sidebar.md'
         },
 
         onlyCover: false,
@@ -155,7 +156,7 @@
     <!-- 实现离线化 -->
     <script>
       if (typeof navigator.serviceWorker !== 'undefined') {
-        navigator.serviceWorker.register('_pwa.js')
+        navigator.serviceWorker.register('.website/_pwa.js')
       }
     </script>
 

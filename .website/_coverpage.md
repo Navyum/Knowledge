@@ -1,5 +1,5 @@
 
-![logo](logo.svg)
+![logo](.website/logo.svg)
 
 ## Navyum's Blog
 - *记录一路走来学习的计算机专业知识体系*

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.svg" alt="Navyum's blog logo" width="100" height="auto" />
+  <img src=".website/logo.svg" alt="Navyum's blog logo" width="100" height="auto" />
 </p>
 
 <h1 align="center">学习文档</h1>

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sitemap="sitemap.xml"
+sitemap=".website/sitemap.xml"
 website_link="https://blog.camscanner.top"
 ignore=(
 _sidebar.md
@@ -20,7 +20,7 @@ urlencode() {
   done
 }
 files=$( \
-  git ls-files -z '*.md' | \
+  git ls-files -z  '*.md'  |  \
   xargs -0 -n1 -I{} -- git log -1 --format="%at {}" {} | \
   sort -r | \
   cut -d " " -f2-)
@@ -28,10 +28,12 @@ files=$( \
 items=""
 for file in ${files[@]}; do
   [[ ${ignore[@]/${file}/} != ${ignore[@]} ]] && continue
-  echo $file
-  echo ${file%.*}
   #encode=$(urlencode "${file%.*}")
-  encode=$(urlencode "${file::-3}")
+  #encode=$(urlencode "${file::-3}")
+  file="${file#../}"
+  base_name="${file%.md}"
+  encode=$(urlencode "$base_name")
+  echo $encode
   link="$website_link/#/$encode"
   date=$(git log -1 --format="%ad" --date="iso-strict-local" -- $file)
   item="

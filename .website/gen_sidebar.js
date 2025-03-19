@@ -178,15 +178,15 @@ function getMdStream(files) {
 
 
 // 入口函数
-function main (path = './', sidebar = '_sidebar.md', replace = 'false') {
+function main (path = './', outpath = './',  sidebar = '_sidebar.md', replace = 'false') {
   // 获取当前目录
   const cwdPath = cwd(path || '.')
 
-  if (!exists(cwdPath)) {
-    console.error(`${cwdPath} directory does not exist.`)
+  if (!exists(outpath)) {
+    console.error(`${outpath} directory does not exist.`)
   }
 
-  const sidebarPath = cwdPath + '/' + sidebar 
+  const sidebarPath = outpath + '/' + sidebar 
   
   if (exists(sidebarPath) && !replace ) {
     console.error(`The sidebar file '${sidebar}' already exists., Use third params to ignore`)
@@ -195,7 +195,7 @@ function main (path = './', sidebar = '_sidebar.md', replace = 'false') {
   }
   
   genSidebar(cwdPath, sidebarPath)
-  console.log(`Successfully generated the sidebar file '${sidebar}'.`)
+  console.log(`Successfully generated the sidebar file '${sidebarPath}'.`)
   
   return true
 }
@@ -205,7 +205,8 @@ function main (path = './', sidebar = '_sidebar.md', replace = 'false') {
 const args = require('minimist')(process.argv.slice(2))
 
 let dir     = args['dir']
+let outdir  = args['outdir']
 let name    = args['name']
 let replace = args['replace']
 
-main(dir, name, replace)
+main(dir, outdir, name, replace)
