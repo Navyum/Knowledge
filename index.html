@@ -109,6 +109,23 @@
           crossChapter: true
         },
 
+        markdown: {             //drawio支持
+            renderer: {
+                code: function (code, lang) {
+                if (lang === 'drawio') {
+                    if (window.drawioConverter) {
+                    console.log('drawio 转化中')
+                    return window.drawioConverter(code)
+                    } else {
+                    return `<div class='drawio-code'>${code}</div>`
+                    }
+                } else {
+                    return this.origin.code.apply(this, arguments);
+                }
+                }
+            }
+        },
+
       };
     </script>
    
@@ -260,7 +277,21 @@
     <!-- front matter -->
     <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/front-matter.min.js"></script>
 
+    <!-- 支持mermaid -->
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true });
+      window.mermaid = mermaid;
+    </script>
+    <script src="//unpkg.com/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
 
-  
+    <!-- 支持 drawio -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-drawio/viewer.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/docsify-drawio/drawio.js'></script>
+
+    <!-- 支持 echarts -->
+    <script src="//cdn.jsdelivr.net/npm/echarts@latest/dist/echarts.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/docsify-echarts-plugin/lib/index.min.js"></script>
+
   </body>
 </html>
