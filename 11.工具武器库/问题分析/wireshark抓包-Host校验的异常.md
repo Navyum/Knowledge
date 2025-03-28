@@ -1,3 +1,12 @@
+---
+title: wireshark抓包-Host校验的异常
+date: 2025-03-28 15:11:11
+author: Navyum
+tags: 
+ - 抓包、分析、tomcat、/Users/haijun_yang/Desktop/记录/API压测框架-locust.md$0
+categories: 
+ - 笔记
+---
 ## wireshark抓包
 
 ### nginx 负载均衡导致的400错误
