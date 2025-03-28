@@ -30,3 +30,73 @@
 
 ## Reading Books
 - [📚 读书笔记](https://www.notion.so/navyum/1c42fcd1fefa4e948d8514761b2ab8c7?v=0ca5dc6ee29e4c2787dbd0f1055b4ed0)
+
+```js
+// --echarts--
+const option = {
+        title: {
+            text: 'APP、PC分享查看 PV 折线图'
+        },
+        tooltip: {},
+        xAxis: {
+            type: 'category',
+            data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            name: 'PV',
+            type: 'line',
+            data: [7829, 0, 0, 0, 1, 0, 0, 0, 1, 0]
+        }]
+    };
+chart.setOption(option, true)
+
+```
+
+```js
+// --echarts--
+const option = {
+    grid: {
+        left: '10%',
+        right: '10%',
+        bottom: '10%',
+        top: '10%',
+        containLabel: true
+    },
+    title: {
+        text: '2024 时间分配',
+        left: 'center',
+        top: 'bottom'
+    },
+
+    label: {
+        show: true, // 显示标签
+        formatter: '{d}%'
+    },
+    // 图例配置
+    legend: {
+        orient: 'vertical', // 图例排列方向，这里设置为垂直方向
+        left: 'left', // 图例位置在图表左边
+        data: [
+        { name:'业务开发'},
+        { name:'技术升级'},
+        { name:'功能优化'},
+        { name:'工作流程'},
+        ]
+    },
+    series: [
+    {
+      data: [
+        { name:'业务开发', value: 20  },
+        { name:'技术升级', value: 40  },
+        { name:'功能优化', value: 30  },
+        { name:'工作流程', value: 10  },
+        ],
+      type: "pie",
+    }
+  ]
+};
+chart.setOption(option, true)
+```
