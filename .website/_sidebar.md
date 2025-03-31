@@ -10,8 +10,8 @@
   - [09.网络IO技术-阻塞、非阻塞、同步、异步](01.计算机网络/09.网络IO技术-阻塞、非阻塞、同步、异步.md)
   - [10.网络文件IO优化](01.计算机网络/10.网络文件IO优化.md)
   - [11.SSH公私钥验证](01.计算机网络/11.SSH公私钥验证.md)
-  - [99.socket编程](01.计算机网络/99.socket编程.md)
-  - [QA](01.计算机网络/QA.md)
+  - [12.socket编程](01.计算机网络/12.socket编程.md)
+  - [50.常见的题目](01.计算机网络/50.常见的题目.md)
   - [README](01.计算机网络/README.md)
   - 📁 Pcap资料
 - 📁 02.操作系统
@@ -277,8 +277,11 @@
   - [piclist](11.工具武器库/piclist.md)
   - [白嫖huggingface的API](11.工具武器库/白嫖huggingface的API.md)
   - 📁 问题分析
+    - [API压测框架之locust](11.工具武器库/问题分析/API压测框架之locust.md)
+    - [systemTap分析](11.工具武器库/问题分析/systemTap分析.md)
     - [todo](11.工具武器库/问题分析/todo.md)
-    - [wireshark抓包](11.工具武器库/问题分析/wireshark抓包.md)
+    - [wireshark抓包之Host校验的异常](11.工具武器库/问题分析/wireshark抓包之Host校验的异常.md)
+    - [wireshark抓包之SSL握手问题](11.工具武器库/问题分析/wireshark抓包之SSL握手问题.md)
 - 📁 12.个人思考
   - [厚积薄发](12.个人思考/厚积薄发.md)
   - [职业规划](12.个人思考/职业规划.md)
