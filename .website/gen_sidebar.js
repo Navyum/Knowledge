@@ -69,8 +69,39 @@ function getFiles (dir) {
   function getMap(dir, curIndex) {
 
     var files = fs.readdirSync(dir) //同步拿到文件目录下的所有文件名
-    //console.log("files A---> :" ,files);
+    files.map(function (file) {
 
+      //var subPath = path.resolve(dir, file) //拼接为绝对路径
+      var subPath   = path.join(dir, file) //拼接为相对路径
+      var stats     = fs.statSync(subPath) //拿到文件信息对象
+      //console.log("files B---> :" ,subPath);
+      // 必须过滤掉node_modules文件夹
+      if (file != 'node_modules') {
+        mapDeep[file] = curIndex + 1
+
+        if (stats.isDirectory()) { //判断是否为文件夹类型
+          return getMap(subPath, mapDeep[file]) //递归读取文件夹
+        }
+      }
+
+    })
+  }
+
+  getMap(dir, mapDeep[dir])
+  //console.log("dirs", mapDeep)
+
+  //深度遍历生成完整 mapDeep 对象
+  function readdirs(dir, folderName, myroot) {
+    //构造文件夹数据
+    var result = {
+      path: dir,
+      title: path.basename(dir),
+      type: 'directory',
+      deep: mapDeep[folderName]
+    }
+  
+    var files = fs.readdirSync(dir) //同步拿到文件目录下的所有文件名
+  
     // 新增排序：目录优先，按名称不区分大小写排序
     files.sort((a, b) => {
       const aPath = path.join(dir, a);
@@ -86,43 +117,8 @@ function getFiles (dir) {
       return a.localeCompare(b, undefined, { sensitivity: 'base' });
     });
 
-    //console.log("files B---> :" ,files);
-
-    files.map(function (file) {
-
-      //var subPath = path.resolve(dir, file) //拼接为绝对路径
-      var subPath   = path.join(dir, file) //拼接为相对路径
-      var stats     = fs.statSync(subPath) //拿到文件信息对象
-
-      // 必须过滤掉node_modules文件夹
-      if (file != 'node_modules') {
-        mapDeep[file] = curIndex + 1
-
-        if (stats.isDirectory()) { //判断是否为文件夹类型
-          return getMap(subPath, mapDeep[file]) //递归读取文件夹
-        }
-      }
-
-    })
-  }
-
-  getMap(dir, mapDeep[dir])
-  console.log("dirs",mapDeep)
-
-  //深度遍历生成完整 mapDeep 对象
-  function readdirs(dir, folderName, myroot) {
-    //构造文件夹数据
-    var result = {
-      path: dir,
-      title: path.basename(dir),
-      type: 'directory',
-      deep: mapDeep[folderName]
-    }
-  
-    var files = fs.readdirSync(dir) //同步拿到文件目录下的所有文件名
-  
-    //构造文件夹childen数据
-    result.children = files.map(  function (file) {
+    // 构造文件夹childen数据
+    result.children = files.map(function (file) {
         //var subPath = path.resolve(dir, file) //拼接为绝对路径
         var subPath = path.join(dir, file) //拼接为相对路径
         var stats   = fs.statSync(subPath) //拿到文件信息对象
@@ -155,6 +151,7 @@ function getFiles (dir) {
       
     })
   
+    //console.log("result:",JSON.stringify(result));
     return result
   }
 
@@ -185,6 +182,7 @@ function getMdStream(files) {
         if (item.type === 'directory') {
           //前后带换行 os.EOL
           tree += blankspace + '- ' + '📁 ' + toCamelCase(item.title) + os.EOL 
+          //tree += blankspace + '- ' + '🗂 ' + toCamelCase(item.title) + os.EOL 
 
         } else if (item.type === 'file') {
           //tree += os.EOL + blankspace + '- [' + item.name + '](' + item.path + ')' + os.EOL
