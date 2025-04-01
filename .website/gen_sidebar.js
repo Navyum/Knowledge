@@ -69,6 +69,24 @@ function getFiles (dir) {
   function getMap(dir, curIndex) {
 
     var files = fs.readdirSync(dir) //同步拿到文件目录下的所有文件名
+    //console.log("files A---> :" ,files);
+
+    // 新增排序：目录优先，按名称不区分大小写排序
+    files.sort((a, b) => {
+      const aPath = path.join(dir, a);
+      const bPath = path.join(dir, b);
+      const aIsDir = fs.statSync(aPath).isDirectory();
+      const bIsDir = fs.statSync(bPath).isDirectory();
+      
+      // 目录优先排序
+      if (aIsDir !== bIsDir) {
+        return aIsDir ? -1 : 1;
+      }
+      // 相同类型时按名称排序
+      return a.localeCompare(b, undefined, { sensitivity: 'base' });
+    });
+
+    //console.log("files B---> :" ,files);
 
     files.map(function (file) {
 
@@ -108,23 +126,31 @@ function getFiles (dir) {
         //var subPath = path.resolve(dir, file) //拼接为绝对路径
         var subPath = path.join(dir, file) //拼接为相对路径
         var stats   = fs.statSync(subPath) //拿到文件信息对象
-  
+
         //文件夹过滤,开头.隐藏文件夹
         //判断是否为文件夹类型
-        if (stats.isDirectory() && !file.startsWith('.') && file != "node_modules" ) { 
-          return readdirs(subPath, file, file) //递归读取文件夹
+        if (stats.isDirectory()) {
+          if (!file.startsWith('.') && file != "node_modules" ) { 
+            console.log("[dir add]:" ,subPath);
+            return readdirs(subPath, file, file) //递归读取文件夹
+          } else {
+            console.log("[dir remove]:" ,subPath);
+          }
         }
   
         // 文件过滤,开头_的md文件
         // 仅输出.md文件类型文件的数据
         if (path.extname(file) === '.md' && !file.startsWith('_') ) {
           const path =  subPath.replace(rootDir + '/', '');
+          console.log("[file add]:",subPath);
           return {
             path: path,
             name: file.replace('.md',''),
             type: 'file',
             deep: mapDeep[folderName] + 1,
           }
+        } else {
+          console.log("[file remove]:",subPath);
         }
       
     })
