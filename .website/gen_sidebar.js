@@ -25,11 +25,9 @@ function pwd (path) {
 }
 
 function toCamelCase(str) {
-  return str
-    .replace(/(\d+)\./g, '$1-') // 将数字后的点改为连字符（如 01. -> 01-）
-    .replace(/\s+/g, '-')       // 将空格替换为连字符
-    .replace(/\b(\w)/g, (match, capture) => capture.toUpperCase())
-    .replace(/[-_]/g, ' ')
+  return str.replace(/\b(\w)/g, function (match, capture) {
+    return capture.toUpperCase()
+  }).replace(/-|_/g, ' ')
 }
 
 //----------------
@@ -188,7 +186,7 @@ function getMdStream(files) {
 
         } else if (item.type === 'file') {
           //tree += os.EOL + blankspace + '- [' + item.name + '](' + item.path + ')' + os.EOL
-          tree += blankspace + '- [' + toCamelCase(item.name) + '](' + item.path + ')' + os.EOL
+          tree += blankspace + '- [' + item.name + '](' + item.path + ')' + os.EOL
 
         }
 
