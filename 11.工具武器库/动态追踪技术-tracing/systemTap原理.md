@@ -34,3 +34,14 @@ categories:
 
 ### 二、systemtap关系图
 <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/aac61ecde949c46d79919400cdf289b9.png" width="80%"></p>
+
+### 三、systemtap存在的问题：
+* 基于内核模块技术，在RHEL以外的系统上都不可靠
+* 稳定性差。SystemTap不是内核的一部分，所以必须适配内核的改动。因为内核通常被stripped，DWARF格式调试信息被移除了，所以必须要安装对应的debuginfo包。
+* 依赖dwarf，需要安装内核符号，<span style="color: rgb(255, 76, 65);">用户层程序则在编译时需要-g</span>
+* 因为需要编译，所以systemtap相对DTrace慢很多
+
+### 四、systemtap优点：
+* 使用的脚本语言，所以支持的特性更全（如函数偏移、循环、函数局部变量、结构体引用）
+* 具有成熟的用户态符号自动加载，可以写比较复杂的探针处理程序
+* 内置了大量帮助程序(tapset)，可用于检测不同的目标
