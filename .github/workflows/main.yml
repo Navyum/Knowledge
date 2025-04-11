@@ -57,7 +57,10 @@ jobs:
 
       - name: Output latest commit SHA
         id: set_sha
-        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        run: |
+          sha=$(git rev-parse HEAD)
+          echo ${sha}
+          echo "sha=${sha}" >> $GITHUB_OUTPUT
 
   deploy:
     # Add a dependency to the build job
