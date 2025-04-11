@@ -54,7 +54,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-          
+
+      - name: Output latest commit SHA
+        id: set_sha
+        run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
   deploy:
     # Add a dependency to the build job
     needs: build
@@ -74,7 +78,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref }}  # 明确指定要检出的 ref
+          ref: ${{ needs.build.outputs.sha }}  # 使用 build 阶段的最新 commit SHA
 
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
