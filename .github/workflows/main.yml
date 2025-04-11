@@ -79,14 +79,9 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      - name: Debug ref
-        run: |
-          echo "Current SHA: $(git rev-parse HEAD)"
-          echo "needs.build.outputs.sha: ${{ needs.build.outputs.sha }}"
-      
       - uses: actions/checkout@v4
         with:
-          ref: ${{ needs.build.outputs.sha }}  # 使用 build 阶段的最新 commit SHA
+          ref: ${{ github.event.repository.default_branch }}  # 使用 build 阶段的最新 commit SHA
 
       - name: upload artifact
         uses: actions/upload-pages-artifact@v3
