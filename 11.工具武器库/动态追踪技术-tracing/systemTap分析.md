@@ -6,7 +6,7 @@
 * **重要！** 查看对应程序的所有function，以nginx为例
   ```bash
     # 查看Nginx可用的探针点
-    sudo stap -L 'process("/usr/local/openresty/nginx/sbin/nginx").function("*")'
+    sudo stap -L 'process("/usr/local/openresty/nginx/sbin/nginx").function("*")'(还有一种方式是：使用nm ./sbin/nginx，但是看不到参数和文件位置)
 
     # 看到的输出如下：
     ...
@@ -49,3 +49,8 @@ semantic error: no match
 解决方案：自己使用stap -L 查找下正确的探测点
 
 
+
+
+### 教程
+https://sourceware.org/systemtap/documentation.html
+https://sourceware.org/systemtap/tapsets/
