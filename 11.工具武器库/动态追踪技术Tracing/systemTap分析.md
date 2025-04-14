@@ -36,8 +36,11 @@ categories:
     * 假设我们需要找nginx中，某个URI的函数调用栈信息
     * 添加探测点之前，我们需要一些基础知识。nginx关闭连接的标准函数为：`ngx_close_connection`
     * 通过如下命令，查看当前版本是否可以添加相应探测点
-      `sudo stap -L 'process("/usr/local/openresty/nginx/sbin/nginx").function("*")'|grep ngx_close_connection`
-      `output: process("/usr/local/openresty/nginx/sbin/nginx").function("ngx_close_connection@src/core/ngx_connection.c:1179") $c:ngx_connection_t*`
+      ```bash
+      sudo stap -L 'process("/usr/local/openresty/nginx/sbin/nginx").function("*")'|grep ngx_close_connection
+      
+      process("/usr/local/openresty/nginx/sbin/nginx").function("ngx_close_connection@src/core/ngx_connection.c:1179") $c:ngx_connection_t*
+      ```
       这样我们确认当前的nginx版本存在函数，且得到该函数的第一个参数为`$c`，属于结构体指针`ngx_connection_t*`
 
 
@@ -167,7 +170,7 @@ semantic error: while resolving probe point: identifier 'process' at test.stp:8:
 semantic error: no match
 ```
 
-错误原因：一般是process对应的探测点不存在，可能是源码版本不匹配等原因，或者是你的环境跟你抄的网上的别人的脚本环境不一致。
+错误原因：一般是process对应的探测点不存在，可能是源码版本不匹配等原因，或者是你的环境跟你抄的网上的别人的脚本环境不一致。即`http_request_headers_filter`这个函数在当前版本的nginx不存在。
 解决方案：自己使用stap -L 查找下正确的探测点
 
 
