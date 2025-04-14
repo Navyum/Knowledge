@@ -32,7 +32,7 @@ categories:
 
 #### nginx配置
 ```nginx.conf
-location = /test
+location = /test {
     content_by_lua_block {
     for i=1, 1000 do
         -- 1. get result 
@@ -114,24 +114,19 @@ location = /test
 ##### 8. 结合已知的情况，尝试复现问题
 * 使用有问题的nginx配置：
   ```nginx.conf
-   location = /test
-    content_by_lua_block {
-        for i=1, 1000 do
-            -- 1. get result 
-            ...
-            -- 2. print result
-
-            ngx.say(string.rep(tostring(i), i))   -- 将i重复i次，并打印
-
-            -- 3. set error case
-            if i == 999 then
-            ngx.say(no_data)         -- 故意打印不存在的变量no_data
-            end
+   location = /test {
+        content_by_lua_block {
+            for i=1, 1000 do
+                ngx.say(string.rep(tostring(i), i))   -- 将i重复i次，并正常打印
+                
+                -- 3. set error case
+                if i == 999 then
+                ngx.say(no_data)                    -- 故意打印不存在的变量no_data
+                end
 
             end
-        end
-        
-        ngx.exit()
+            
+            ngx.exit()
         }
     }
   ```
