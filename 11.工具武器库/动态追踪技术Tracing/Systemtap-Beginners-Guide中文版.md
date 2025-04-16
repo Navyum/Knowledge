@@ -382,8 +382,8 @@ stap -vvv script.stp
 - **-o file_name**：将标准输出发送到名为file_name的文件中。
 - **-S size,count**：将输出文件的最大大小限制为size兆字节，最多存储count个文件。此选项为SystemTap实现了日志轮转操作，生成的文件名带有序列号后缀。
 - **-x process_id**：将SystemTap处理函数`target()`设置为指定的进程ID。有关`target()`的更多信息，请参考SystemTap函数。
-- **-c 'command'**：将SystemTap处理函数`target()`设置为指定的命令，并在该命令执行期间运行SystemTap检测。有关`target()`的更多信息，请参考SystemTap函数。
-- **-e 'script'**：使用script而非文件作为SystemTap翻译器的输入。
+- **-c command**：将SystemTap处理函数`target()`设置为指定的命令，并在该命令执行期间运行SystemTap检测。有关`target()`的更多信息，请参考SystemTap函数。
+- **-e script**：使用script而非文件作为SystemTap翻译器的输入。
 - **-F**：使用SystemTap的飞行记录器模式，并使脚本在后台运行。有关飞行记录器模式的更多信息，请参考2.3.1节“SystemTap飞行记录器模式” 。
 
 有关stap命令的更多信息，请参考stap(1)手册页。有关staprun命令和交叉检测的更多信息，请参考2.2节“为其他计算机生成检测代码”或staprun(8)手册页。
@@ -461,7 +461,7 @@ SystemTap脚本的核心思想是定义事件并为其提供处理程序。当Sy
 在应用程序开发方面，使用事件和处理程序类似于在程序的命令序列中插入诊断打印语句来对代码进行检测。这些诊断打印语句使你能够在程序运行后查看执行的命令历史。
 
 SystemTap脚本允许在不重新编译代码的情况下插入检测代码，并且在处理程序方面提供了更大的灵活性。事件作为处理程序运行的触发器；可以指定处理程序记录特定数据并以特定方式打印它。
-- **格式**：SystemTap脚本使用.stp文件扩展名，其中包含以以下格式编写的探针：
+- **格式**：SystemTap脚本使用.stp文件扩展名，其中包含以下格式编写的探针：
   ```
   probe event {statements}
   ```
@@ -651,7 +651,7 @@ SystemTap在处理程序中支持使用几种基本构造。这些处理程序�
 #### 3.3.1 变量
 变量可在处理程序中随意使用，只需选定一个名称，将函数或表达式的值赋给它，就能在表达式中使用。SystemTap会依据赋给变量的值的类型，自动判断该变量应被定义为字符串型还是整型。例如，如果将变量`foo`设为`gettimeofday_s()`（即`foo = gettimeofday_s()`），那么`foo`会被识别为数字型，可在`printf()`函数中使用整数格式说明符（`%d`）进行打印。
 
-不过，默认情况下变量仅在其所在的探针内有效。这意味着，变量在每次探针处理程序调用时被初始化、使用，之后便会被释放。若要在多个探针间共享变量，需在探针外部使用`global`声明变量名。参考下面这个例子：
+不过，默认情况下变量仅在其所在的探针内有效。这意味着，变量在每次探针处理程序调用时被初始化、使用，之后便会被释放。 **若要在多个探针间共享变量，需在探针外部使用`global`声明变量名。** 参考下面这个例子：
 
 ```bash
 global count_jiffies, count_ms
@@ -742,7 +742,7 @@ SystemTap脚本常被用于观察代码内部的运行情况。在很多情况�
     buf="" count=8196 pos=-131938753921208
 ```
 
-使用`$`后缀时，由数据结构组成的字段不会被展开。“$$”后缀则会打印嵌套数据结构中的值。下面是一个使用“$$”后缀的示例：
+使用`$`后缀时，由数据结构组成的字段不会被展开。“$$”后缀则会打印嵌套数据结构中的值。下面是一个使用`$$`后缀的示例：
 
 ```bash
     stap -e 'probe kernel.function("vfs_read") {printf("%s\n", $$parms$$); exit(); }'
@@ -1108,11 +1108,10 @@ CONFIG_UPROBES=y
 - **process("PATH").function("function")**：可执行文件PATH中用户空间函数function的入口。此事件是kernel.function("function")事件在用户空间的对应事件。它允许在function中使用通配符，并支持.return后缀。
 - **process("PATH").statement("statement")**：statement代码中的最早指令。这是kernel.statement("statement")在用户空间的对应事件。
 - **process("PATH").mark("marker")**：PATH中定义的静态探针点marker。你可以在marker中使用通配符，通过单个探针指定多个标记。静态探针点可能还会有编号参数（`$`1、`$`2等）可供探针使用。
-
   多种用户空间软件包（如Java）包含这些静态探针点。大多数提供静态探针点的软件包也会为原始的用户空间标记事件提供别名。以下是x86_64架构的Java HotSpot JVM的一个此类别名示例：
-    ```bash
-    probe hotspot.gc_begin = process("/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/amd64/server/libjvm.so").mark("gc__begin")
-    ```
+  ```
+  probe hotspot.gc_begin = process("/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64/jre/lib/amd64/server/libjvm.so").mark("gc__begin")
+  ```
 
 - **process.begin**：一个用户空间进程被创建。你可以将其限制为特定的进程ID或可执行文件的完整路径。
 - **process.thread.begin**：一个用户空间线程被创建。你可以将其限制为特定的进程ID或可执行文件的完整路径。
@@ -1416,7 +1415,7 @@ probe timer.sec(5) {
 }
 ```
 
-`kernel.trace("kfree_skb")`跟踪内核中哪些地方丢弃网络数据包。`kernel.trace("kfree_skb")`有两个参数：一个指向正在释放的缓冲区的指针（$skb）和缓冲区在 kernel 代码中被释放的位置（$location）。dropwatch.stp脚本尽可能提供包含$location的函数。默认情况下，检测中没有将$location映射回函数的信息。在SystemTap 1.4版本中，--all-modules选项将包含所需的映射信息，可以使用以下命令来运行该脚本：
+`kernel.trace("kfree_skb")`跟踪内核中哪些地方丢弃网络数据包。`kernel.trace("kfree_skb")`有两个参数：一个指向正在释放的缓冲区的指针（`$`skb）和缓冲区在 kernel 代码中被释放的位置（`$`location）。dropwatch.stp脚本尽可能提供包含`$`location的函数。默认情况下，检测中没有将`$`location映射回函数的信息。在SystemTap 1.4版本中，--all-modules选项将包含所需的映射信息，可以使用以下命令来运行该脚本：
 ```bash
 stap --all-modules dropwatch.stp
 ```
@@ -1526,7 +1525,7 @@ disktop.stp输出对磁盘进行最频繁读写操作的前十个进程。示例
 
 disktop.stp输出中的时间和日期由函数ctime()和gettimeofday_s()返回。ctime()根据自Unix纪元（1970年1月1日）以来经过的秒数得出日历时间。gettimeofday_s()计算自Unix纪元以来的实际秒数，为输出提供了一个相当准确的人类可读时间戳。
 
-在这个脚本中，$return是一个局部变量，它存储每个进程从虚拟文件系统读取或写入的实际字节数。$return只能在返回探针（例如vfs.read.return和vfs.read.return）中使用。
+在这个脚本中，`$`return是一个局部变量，它存储每个进程从虚拟文件系统读取或写入的实际字节数。`$`return只能在返回探针（例如vfs.read.return和vfs.read.return）中使用。
 
 ```log
 [...]
@@ -1885,8 +1884,7 @@ ioblktime.stp计算每个设备的块I/O平均等待时间，并每10秒打印�
     }
   ```
   functioncallcount.stp将目标内核函数作为参数。该参数支持通配符，这使你能够在一定程度上针对多个内核函数。
-
-  functioncallcount.stp的输出包含被调用函数的名称以及在采样时间内的调用次数（按字母顺序排列）。示例5.13 “functioncallcount.stp示例输出” 包含了stap functioncallcount.stp "*@mm/*.c"的输出节选。
+  functioncallcount.stp的输出包含被调用函数的名称以及在采样时间内的调用次数（按字母顺序排列）。示例5.13 “functioncallcount.stp示例输出” 包含了stap functioncallcount.stp "\*@mm/\*.c"的输出节选。
 
 - **示例5.13 functioncallcount.stp示例输出**
   ```log
@@ -1950,12 +1948,12 @@ ioblktime.stp计算每个设备的块I/O平均等待时间，并每10秒打印�
   ```
 
   para-callgraph.stp接受两个命令行参数：
-    - 你想要跟踪其进入/退出调用的函数（$1）。
-    - 第二个可选的触发函数（$2），用于在线程基础上启用或禁用跟踪。只要触发函数尚未退出，每个线程中的跟踪就会继续。
+    - 你想要跟踪其进入/退出调用的函数（`$1`）。
+    - 第二个可选的触发函数（`$2`），用于在线程基础上启用或禁用跟踪。只要触发函数尚未退出，每个线程中的跟踪就会继续。
 
   para-callgraph.stp使用了thread_indent()函数；因此，其输出包含`$1`（即你正在跟踪的探测函数）的时间戳、进程名称和线程ID。有关thread_indent()的更多信息，请参考SystemTap函数中的相关条目。
 
-  以下示例包含了stap para-callgraph.stp 'kernel.function("*@fs/*.c")' 'kernel.function("sys_read")'的输出节选。
+  以下示例包含了stap para-callgraph.stp 'kernel.function("\*@fs/\*.c")' 'kernel.function("sys_read")'的输出节选。
 
 - **示例5.14 para-callgraph.stp示例输出**
   ```log
@@ -2356,7 +2354,8 @@ futexes.stp脚本通过探测futex系统调用来显示锁争用情况。
 
 ### 6.1 解析和语义错误
 解析和语义错误，发生在SystemTap将脚本解析并转换为C代码、生成内核模块之前。例如，类型错误通常源于为变量或数组赋予无效值的操作。
-- **解析错误：预期为foo，却看到bar**：脚本包含语法或排版错误。SystemTap根据探测的上下文，检测到构造类型不正确。例如，下面这个无效的SystemTap脚本缺少探测处理程序：
+- **解析错误：预期为foo，却看到bar**（⁠parse error: expected foo, saw bar）：
+  脚本包含语法或排版错误。SystemTap根据探测的上下文，检测到构造类型不正确。例如，下面这个无效的SystemTap脚本缺少探测处理程序：
   ```bash
   probe vfs.read
   probe vfs.write
@@ -2368,73 +2367,104 @@ futexes.stp脚本通过探测futex系统调用来显示锁争用情况。
     saw: keyword at perror.stp:2:1
     1 parse error(s).
   ```
-- **解析错误：非特权脚本中包含嵌入式代码**：脚本包含不安全的嵌入式C代码，即由%{和%}包围的代码块。SystemTap允许在脚本中嵌入C代码，如果没有合适的tapsets，这会很有用。但是，嵌入式C构造并不安全，如果脚本中出现此类构造，SystemTap会报告此错误以警告用户。如果你确定脚本中的类似构造是安全的，并且你是stapdev组的成员（或具有root权限），可以使用-g选项以 “专家” 模式运行脚本：
+- **解析错误：非特权脚本中包含嵌入式代码**（parse error: embedded code in unprivileged script）：
+  脚本包含不安全的嵌入式C代码，即由%{和%}包围的代码块。SystemTap允许在脚本中嵌入C代码，如果没有合适的tapsets，这会很有用。但是，嵌入式C构造并不安全，如果脚本中出现此类构造，SystemTap会报告此错误以警告用户。如果你确定脚本中的类似构造是安全的，并且你是stapdev组的成员（或具有root权限），可以使用-g选项以 “专家” 模式运行脚本：
   ```
   stap -g script
   ```
 
-- **语义错误：标识符'foo'的类型不匹配……字符串与长整型**：脚本中的函数foo使用了错误的类型（如%s或%d）。在下面的示例中，格式说明符应该是%s而不是%d，因为execname()函数返回的是字符串：
+- **语义错误：标识符'foo'的类型不匹配……字符串与长整型**（semantic error: type mismatch for identifier 'foo' ... string vs. long）：
+  脚本中的函数foo使用了错误的类型（如%s或%d）。在下面的示例中，格式说明符应该是%s而不是%d，因为execname()函数返回的是字符串：
   ```bash
   probe syscall.open
   printf ("%d(%d) open\n", execname(), pid())
   ```
 
-- **语义错误：标识符'foo'的类型未解析**：使用了标识符（变量），但无法确定其类型（整数或字符串）。例如，在脚本从未为变量赋值的情况下，在printf语句中使用该变量时，就会出现这种情况。
+- **语义错误：标识符'foo'的类型未解析**（semantic error: unresolved type for identifier 'foo'）：
+  使用了标识符（变量），但无法确定其类型（整数或字符串）。例如，在脚本从未为变量赋值的情况下，在printf语句中使用该变量时，就会出现这种情况。
 
-- **语义错误：期望符号或数组索引表达式**：SystemTap无法为变量或数组中的某个位置赋值。赋值的目标不是有效的目标。以下示例代码会生成此错误：
+- **语义错误：期望符号或数组索引表达式**（semantic error: Expecting symbol or array index expression）：
+  SystemTap无法为变量或数组中的某个位置赋值。赋值的目标不是有效的目标。以下示例代码会生成此错误：
   ```bash
   probe begin { printf("x") = 1 }
   ```
 
-- **语义错误：在搜索N元函数时，函数调用未解析**：脚本中的函数调用或数组索引表达式使用了无效数量的参数。在SystemTap中，元数（arity）可以指数组的索引数量，也可以指函数的参数数量。
+- **语义错误：在搜索N元函数时，函数调用未解析**（⁠while searching for arity N function, semantic error: unresolved function call）：
+  脚本中的函数调用或数组索引表达式使用了无效数量的参数。在SystemTap中，元数（arity）可以指数组的索引数量，也可以指函数的参数数量。
 
-- **语义错误：不支持数组局部变量，是否缺少全局声明？**：脚本在未将数组声明为全局变量的情况下使用了数组操作（在SystemTap脚本中，全局变量可以在使用后声明）。如果使用数组时索引数量不一致，也会出现类似的消息。
+- **语义错误：不支持数组局部变量，是否缺少全局声明？**（⁠semantic error: array locals not supported, missing global declaration?）：
+  脚本在未将数组声明为全局变量的情况下使用了数组操作（在SystemTap脚本中，全局变量可以在使用后声明）。如果使用数组时索引数量不一致，也会出现类似的消息。
 
-- **语义错误：在'foreach'迭代期间修改了变量'foo'**：数组foo在活动的foreach循环中被修改（赋值或删除）。如果脚本中的某个操作在foreach循环中进行函数调用，也会显示此错误。
+- **语义错误：在'foreach'迭代期间修改了变量'foo'**（⁠semantic error: variable 'foo' modified during 'foreach' iteration
+）：
+  数组foo在活动的foreach循环中被修改（赋值或删除）。如果脚本中的某个操作在foreach循环中进行函数调用，也会显示此错误。
 
-- **语义错误：在位置N探测点不匹配，解析探测点foo时出错**：SystemTap不理解事件或SystemTap函数foo的含义。这通常意味着SystemTap在tapset库中找不到与foo匹配的项。N指的是错误所在的行和列。
+- **语义错误：在位置N探测点不匹配，解析探测点foo时出错**（⁠semantic error: probe point mismatch at position N, while resolving probe point foo
+）：
+  SystemTap不理解事件或SystemTap函数foo的含义。这通常意味着SystemTap在tapset库中找不到与foo匹配的项。N指的是错误所在的行和列。
 
-- **语义错误：无法解析探测点，解析探测点foo时出错**：由于多种原因，SystemTap无法解析事件或处理程序函数foo。当脚本包含事件kernel.function("something")，而something不存在时，就会出现此错误。在某些情况下，该错误也可能意味着脚本包含无效的内核文件名或源代码行号。
+- **语义错误：无法解析探测点，解析探测点foo时出错**（⁠semantic error: no match for probe point, while resolving probe point foo
+）：
+  由于多种原因，SystemTap无法解析事件或处理程序函数foo。当脚本包含事件kernel.function("something")，而something不存在时，就会出现此错误。在某些情况下，该错误也可能意味着脚本包含无效的内核文件名或源代码行号。
 
-- **语义错误：未解析的目标符号表达式**：脚本中的处理程序引用了目标变量，但无法解析该变量的值。此错误也可能意味着处理程序在无效的上下文中引用了目标变量，这可能是生成代码的编译器优化导致的结果。
+- **语义错误：未解析的目标符号表达式**（⁠semantic error: unresolved target-symbol expression
+）：
+  脚本中的处理程序引用了目标变量，但无法解析该变量的值。此错误也可能意味着处理程序在无效的上下文中引用了目标变量，这可能是生成代码的编译器优化导致的结果。
 
-- **语义错误：libdwfl失败**：处理调试信息时出现问题。在大多数情况下，此错误是由于安装的kernel-debuginfo包的版本与被探测的内核不完全匹配，或者安装的kernel-debuginfo包本身可能存在一致性或正确性问题。
+- **语义错误：libdwfl失败**（⁠semantic error: libdwfl failure
+）：
+  处理调试信息时出现问题。在大多数情况下，此错误是由于安装的kernel-debuginfo包的版本与被探测的内核不完全匹配，或者安装的kernel-debuginfo包本身可能存在一致性或正确性问题。
 
-- **语义错误：找不到foo的调试信息**：SystemTap找不到合适的kernel-debuginfo包。
+- **语义错误：找不到foo的调试信息**（⁠semantic error: cannot find foo debuginfo
+）：
+  SystemTap找不到合适的kernel-debuginfo包。
 
 ### 6.2 运行时错误和警告
 运行时错误和警告，发生在SystemTap检测工具已安装并在系统上收集数据时。
-- **警告：错误数量：N，跳过的探测：M**：在本次运行期间发生了错误和 / 或跳过了探测。N和M表示由于某些条件（如在一段时间内执行事件处理程序所需时间过长）而未执行的探测数量。
+- **警告：错误数量：N，跳过的探测：M**（⁠WARNING: Number of errors: N, skipped probes: M）：
+  在本次运行期间发生了错误和 / 或跳过了探测。N和M表示由于某些条件（如在一段时间内执行事件处理程序所需时间过长）而未执行的探测数量。
 
-- **除以零**：脚本代码执行了无效的除法操作。
+- **除以零**（⁠division by 0）：
+  脚本代码执行了无效的除法操作。
 
-- **聚合元素未找到**：在尚未累积任何值的聚合上，调用了除@count之外的统计提取函数，这类似于除以零的情况。
+- **聚合元素未找到**（⁠aggregate element not found
+）：
+  在尚未累积任何值的聚合上，调用了除@count之外的统计提取函数，这类似于除以零的情况。
 
-- **聚合溢出**：此时，包含聚合值的数组包含了太多不同的键值对。
+- **聚合溢出**（⁠aggregation overflow
+）：
+  此时，包含聚合值的数组包含了太多不同的键值对。
 
-- **MAXNESTING超出限制**：尝试的函数调用嵌套级别过多。默认允许的函数调用嵌套级别为10。
+- **MAXNESTING超出限制**（⁠MAXNESTING exceeded
+）：
+  尝试的函数调用嵌套级别过多。默认允许的函数调用嵌套级别为10。
 
-- **MAXACTION超出限制**：探测处理程序在探测处理程序中尝试执行的语句过多。默认情况下，探测处理程序中允许的操作数为1000。
+- **MAXACTION超出限制**（⁠MAXACTION exceeded
+）：
+  探测处理程序在探测处理程序中尝试执行的语句过多。默认情况下，探测处理程序中允许的操作数为1000。
 
-- **在内核 / 用户空间字符串复制错误，地址为ADDR**：探测处理程序试图在无效地址（ADDR）处从内核或用户空间复制字符串。
+- **在内核 / 用户空间字符串复制错误，地址为ADDR**（⁠kernel/user string copy fault at ADDR
+）：
+  探测处理程序试图在无效地址（ADDR）处从内核或用户空间复制字符串。
 
-- **指针解引用错误**：在指针解引用操作（如目标变量求值）期间遇到错误。
+- **指针解引用错误**（⁠pointer dereference fault）：
+  在指针解引用操作（如目标变量求值）期间遇到错误。
 
 
 ## 第7章 参考文献
 ----
 本章列举了有关SystemTap的更多信息的参考资料。在编写高级探测和tapsets时，请参考这些资料。
-- **SystemTap Wiki**：SystemTap Wiki是与SystemTap的部署、使用和开发相关的链接和文章的集合。可以在http://sourceware.org/systemtap/wiki/HomePage上找到它。
+- **SystemTap Wiki**：SystemTap Wiki是与SystemTap的部署、使用和开发相关的链接和文章的集合。可以在 http://sourceware.org/systemtap/wiki/HomePage 上找到它。
 
-- **SystemTap教程**：本书的大部分内容来自SystemTap教程。SystemTap教程更适合具有C++和内核开发中级到高级知识的用户，可以在http://sourceware.org/systemtap/tutorial/上找到它。
+- **SystemTap教程**：本书的大部分内容来自SystemTap教程。SystemTap教程更适合具有C++和内核开发中级到高级知识的用户，可以在 http://sourceware.org/systemtap/tutorial/ 上找到它。
 
 - **man stapprobes**：stapprobes(3stap)手册页列举了SystemTap支持的各种探测点，以及SystemTap tapset库定义的其他别名。手册页的底部列出了其他手册页，这些手册页列举了特定系统组件的类似探测点，如tapset::scsi、tapset::kprocess、tapset::signal等。
 
 - **man stapfuncs**：stapfuncs(3stap)手册页列举了SystemTap tapset库支持的众多函数，以及每个函数的规定语法。不过，它并未提供所有支持函数的完整列表，还有更多未记录的函数可用。
 
-- **SystemTap Tapset参考手册**：SystemTap Tapset参考手册更详细地描述了tapsets中预定义的函数和探测点。可以在http://sourceware.org/systemtap/tapsets/上找到它。
+- **SystemTap Tapset参考手册**：SystemTap Tapset参考手册更详细地描述了tapsets中预定义的函数和探测点。可以在 http://sourceware.org/systemtap/tapsets/ 上找到它。
 
-- **SystemTap语言参考**：SystemTap语言参考是对SystemTap语言结构和语法的全面参考。建议具有C++和其他类似编程语言的基础到中级知识的用户使用，所有用户都可以在http://sourceware.org/systemtap/langref/上访问它。
+- **SystemTap语言参考**：SystemTap语言参考是对SystemTap语言结构和语法的全面参考。建议具有C++和其他类似编程语言的基础到中级知识的用户使用，所有用户都可以在 http://sourceware.org/systemtap/langref/ 上访问它。
 
 - **Tapset开发者指南**：当你具备足够的编写SystemTap脚本的能力后，可以尝试编写自己的tapsets。Tapset开发者指南描述了如何向tapset库中添加函数。
 
