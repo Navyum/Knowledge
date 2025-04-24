@@ -33,9 +33,9 @@ for file in ${files[@]}; do
   file="${file#../}"
   base_name="${file%.md}"
   encode=$(urlencode "$base_name")
-  echo $encode
   link="$website_link/#/$encode"
   date=$(git log -1 --format="%ad" --date="iso-strict-local" -- $file)
+  echo $date $file $encode
   item="
   <url>
     <loc>$link</loc>
