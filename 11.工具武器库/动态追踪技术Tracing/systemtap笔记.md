@@ -895,3 +895,23 @@ sub quote_sh_args ($) {
 * 另外，该仓库针对nginx、lua、luajit 添加了对应的tapset库，方便进行测试
 
 * [官方地址](https://github.com/openresty/openresty-systemtap-toolkit)
+
+#### stap++核心脚本说明：
+[lj-lua-stacks.sxx：](https://github.com/openresty/stapxx/blob/master/samples/lj-lua-stacks.sxx) CPU统计工具，获取lua代码堆栈统计
+[sample-bt-leaks.sxx：](https://github.com/openresty/stapxx/blob/master/samples/sample-bt-leaks.sxx) 内存工具统计，对glibc内置函数（malloc、calloc、realloc）进行的内存分配采集回溯信息，查看未被释放的内存（一般需要两次采集来进行差异分析）
+[lj-gc-objs.sxx：](https://github.com/openresty/stapxx/blob/master/samples/lj-gc-objs.sxx) 内存工具统计，lua类型的内存分配
+[lj-str-tab.sxx：](https://github.com/openresty/stapxx/blob/master/samples/lj-str-tab.sxx) 内存工具统计，查看lua全局变量
+[ngx-lua-count-timers.sxx：](https://github.com/openresty/stapxx/blob/master/samples/ngx-lua-count-timers.sxx) 统计timer数量
+[sample-bt.sxx：](https://github.com/openresty/stapxx/blob/master/samples/sample-bt.sxx) CPU统计工具，获取任意进程（nginx）进行用户态或者内核态采样。输出是汇总后的调用栈（按照总数）。同toolkit中的sample-bt功能一样，但是toolkit的可以自动获取并添加其他so文件信息到stap命令行。
+
+[ngx-upstream-err-log.sxx：](https://github.com/openresty/stapxx/blob/master/samples/ngx-upstream-err-log.sxx) 排查`upstream prematurely closed connection while`等upstream问题
+
+#### toolkit核心脚本说明：
+[sample-bt：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/sample-bt) CPU统计工具，获取任意进程（nginx）进行用户态或者内核态采样。输出是汇总后的调用栈（按照总数）
+[sample-bt-off-cpu：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/sample-bt-off-cpu) CPU统计工具，对进程级别的off-cpu的采样统计
+[fix-lua-bt：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/fix-lua-bt) 对采样结果进行优化，展示更多信息。将`lj-lua-stacks.sxx`的结果根据 lua文件+行号 转换为对应函数
+[ngx-phase-handlers：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/ngx-phase-handlers) 按照真实执行顺序，打印出实际注册的phase和对应的handler。可以用来解决配置handler顺序相关问题。
+
+辅助工具：
+[check-debug-info：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/check-debug-info) 检查当前进程中使用的so文件，哪些没有debuginfo\dwarf信息
+[ngx-lua-bt：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/ngx-lua-bt) 获取Lua的当前调用栈（**在luajit环境没跑通**，代码有大量问题，可以用lj-lua-stacks.sxx替代）
