@@ -28,6 +28,9 @@ nm /path-to-binary
 * 追求性能，选择bpftrace
 * 追求安全性，选择bpftrace
 
+### 关于静态检测和动态追踪
+静态检测：对静态快照的检测，一般是出现问题后，对coredump进行"尸检"
+动态追踪：实时动态聚合，一般是出现问题后，在程序尚未出现异常前，通过实时观察程序变化，进行"体检"
 
 ## 资料
 [awesome-systemtap](https://github.com/lichuang/awesome-systemtap-cn?tab=readme-ov-file)
