@@ -1,11 +1,11 @@
 ---
-title: JAVA
-date: 2025-06-24 10:38:46
+title: eino
+date: 2025-06-24 10:18:13
 author: Navyum
 tags: 
- - java
+ - LLM
 categories: 
- - java
+ - LLM
 article: true
 index: true
 

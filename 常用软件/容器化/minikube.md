@@ -13,6 +13,7 @@ index: true
 headerDepth: 2
 sticky: false
 star: true
+icon: lineicons:kubernetes
 ---
 
 # minikube安装踩坑笔记

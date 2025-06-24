@@ -14,6 +14,7 @@ index: true
 headerDepth: 2
 sticky: false
 star: true
+icon: logos:kafka-icon
 ---
 
 ### 整体架构：

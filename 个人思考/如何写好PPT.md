@@ -2,6 +2,7 @@
 title: 如何写好PPT
 date: 2025-06-17 14:28:43
 author: Navyum
+icon: teenyicons:ppt-solid
 tags: 
  - 职场PPT
  - PPT美化
