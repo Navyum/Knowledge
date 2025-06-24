@@ -1,9 +1,9 @@
 - 📁 个人思考
-  - [厚积薄发](个人思考/厚积薄发.md)
   - [如何事故复盘](个人思考/如何事故复盘.md)
+  - [如何做好工作](个人思考/如何做好工作.md)
+  - [如何做职业规划](个人思考/如何做职业规划.md)
+  - [如何养成微习惯](个人思考/如何养成微习惯.md)
   - [如何写好PPT](个人思考/如何写好PPT.md)
-  - [微习惯养成](个人思考/微习惯养成.md)
-  - [职业规划](个人思考/职业规划.md)
   - [职场方法论](个人思考/职场方法论.md)
 - 📁 大模型LLM
   - 📁 00.概念
@@ -12,9 +12,10 @@
     - [03.Prompt](大模型LLM/00.概念/03.Prompt.md)
     - [04.Models](大模型LLM/00.概念/04.Models.md)
   - 📁 01.框架
-    - [README](大模型LLM/01.框架/README.md)
+    - [eino](大模型LLM/01.框架/eino.md)
+    - [langchain](大模型LLM/01.框架/langchain.md)
   - 📁 02.RAG
-    - [README](大模型LLM/02.RAG/README.md)
+    - [RAG](大模型LLM/02.RAG/RAG.md)
   - 📁 03.微调
     - [README](大模型LLM/03.微调/README.md)
   - 📁 04.应用
@@ -71,8 +72,8 @@
   - 📁 数据库
     - 📁 Clickhouse
       - [原理](常用软件/数据库/clickhouse/原理.md)
-    - 📁 Es
-      - [原理](常用软件/数据库/es/原理.md)
+    - 📁 ElasticSearch
+      - [原理](常用软件/数据库/elasticSearch/原理.md)
     - 📁 Mysql
       - [01.Mysql逻辑架构](常用软件/数据库/mysql/01.Mysql逻辑架构.md)
       - [02.日志系统](常用软件/数据库/mysql/02.日志系统.md)
