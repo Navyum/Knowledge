@@ -71,10 +71,12 @@ upstream middleground_workonly_backend {
    <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/3f57168739ae9cea17e33cebca34d773.png" width="80%"></p>
 
 5. TLS握手失败错误码 80 解读：
-    * Internal Error：服务端内部错误。一般是：
+    * Internal Error：服务端内部错误。这个错误比较坑的地方就是，过于通用，没有给到具体错误位置。
+    * 错误一般是：
         * 证书问题
         * 握手协议不匹配
         * 无法协商密钥套件
+        * 缺少必要信息例如SNI的server_name等
     * 官方解释：[RFC](https://www.ietf.org/rfc/rfc5246.txt)
       >internal_error：
       > An internal error unrelated to the peer or the correctness of the
