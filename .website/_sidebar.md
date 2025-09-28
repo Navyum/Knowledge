@@ -19,6 +19,7 @@
   - 📁 03.微调
     - [README](大模型LLM/03.微调/README.md)
   - 📁 04.应用
+    - [关于GEO优化Generative-Engine-Optimization](大模型LLM/04.应用/关于GEO优化Generative-Engine-Optimization.md)
     - [白嫖huggingface的API](大模型LLM/04.应用/白嫖huggingface的API.md)
 - 📁 工具武器库
   - 📁 动态追踪技术Tracing
