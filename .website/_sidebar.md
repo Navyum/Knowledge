@@ -56,6 +56,7 @@
   - [markdown高级技巧](工具武器库/markdown高级技巧.md)
   - [paypal支付](工具武器库/paypal支付.md)
   - [piclist](工具武器库/piclist.md)
+  - [关于GEO优化](工具武器库/关于GEO优化.md)
   - [插件推荐](工具武器库/插件推荐.md)
   - [白嫖huggingface的API](工具武器库/白嫖huggingface的API.md)
 - 📁 常用软件
