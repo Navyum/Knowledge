@@ -47,6 +47,7 @@
     - [todo](工具武器库/问题分析/todo.md)
   - 📁 静态追踪技术GDB
     - [python运行gdb](工具武器库/静态追踪技术GDB/python运行gdb.md)
+  - [2025提效插件推荐](工具武器库/2025提效插件推荐.md)
   - [electron](工具武器库/electron.md)
   - [github_action](工具武器库/github_action.md)
   - [HEIF编解码器安装](工具武器库/HEIF编解码器安装.md)
