@@ -16,26 +16,27 @@ categories:
 * SystemTap的语法基础跟C语言类似，这里只记录存在差异的点和systemtap特有的语法
 * SystemTap的语言是`强类型、无声明的过程式语言`，受dtrace和awk的启发
 
-----
-### 一、命令行参数
+---
+
+## 一、命令行参数
 以下列举几个常用的参数
 
-#### -x PID
+### -x PID
 -x用于传递PID参数给systemtap脚本，程序内部可以通过内置函数`target()`获取到
 e.g.：`target() == pid()`
 
-#### -T seconds
+### -T seconds
 -T用于设置脚本执行时间， seconds秒之后退出
 
-#### -L
+### -L
 列举出二进制文件对应的函数在哪里（所在文件和行数）。
 <span style="color: rgb(255, 41, 65);">注意：二进制文件必须有调试信息</span>
 e.g.：`stap -L 'process("/usr/local/openresty/nginx/sbin/nginx").function("*")'`
 
-#### -G VAR=VAL
+### -G VAR=VAL
 设置全局变量VAR的值为VAL，并传入stp脚本
 
-#### -I Tapset_DIR
+### -I Tapset_DIR
 添加tapset扩展，例如官方扩展、nginx tapset
 注意：添加扩展后，在相应的脚本中还需要引入
 e.g.
@@ -51,18 +52,21 @@ probe process("x").function("f"){
 
 ```
 
-----
-### 二、systemtap脚本分类
+---
+
+## 二、systemtap脚本分类
 * 探测脚本
 * tapset脚本（类似于库的概念）
 
-----
-### systemtap主要外层结构
+---
+
+## systemtap主要外层结构
 * probes 探测
 * function 函数
 
-----
-### 三、探测事件定义：
+---
+
+## 三、探测事件定义
 ```stp
 probe event { 
   STMT 
@@ -74,7 +78,7 @@ e.g.
 * *probe kernel.function("tcp*"){ ... }*
 * *probe process("nginx").function("ngx_*"){ ... }*
 
-#### 探测事件分类：
+### 探测事件分类
 * 按照事件类型分类：
     * 同步事件：程序执行到特定代码位置时，触发同步事件（参考断点）
         * 与代码相关的都是同步事件
@@ -91,20 +95,20 @@ e.g.
     * 系统调用：*syscall*
     * 用户事件：*process(PATH).function(PATTERN)*
 
-### 四、探测点
+## 四、探测点
 
-#### PATTERN 语法
+### PATTERN 语法
 `函数名[@文件名][:行号]`
 e.g.：`ngx_http_writer@src/http/ngx_http_request.c:2786`
 注意：函数名支持使用通配符*的写法
 
-#### function、statement区别
+### function、statement区别
 探测事件除了用`function`，还可以使用`statement`
 *process(PATH).statement(PATTERN)*
 statement用来在精确的位置放置一个探测点，暴露在该位置可见的局部变量。所以需要指定文件名和对应行号。
 一般用来观察变量的多次变化情况
 
-#### 事件调用时机
+### 事件调用时机
 在不同的时机定义探测点，例如函数调用、函数返回：
 * call
 * return
@@ -119,7 +123,7 @@ probe kernel.function("*@net/socket.c").return {
 }
 ```
 
-#### 用户空间探测
+### 用户空间探测
 用户空间内定义不同的时机的探测
 * 当用户程序函数探测：*process(PATH).function(PATTERN)*
 * 当用户程序进程创建：*process(PATH).begin*
@@ -129,18 +133,18 @@ probe kernel.function("*@net/socket.c").return {
 * 当用户程序发生系统调用：process(PATH).syscall
 * 当用户程序系统调用返回：process(PATH).syscall.return
 
-### 五、探测点的STMT
+## 五、探测点的STMT
 
-#### 脚本变量
+### 脚本变量
 * 使用*global*关键字定义全局变量
 * 变量无需申明类型；在printf时，需要指定类型
 
-##### 目标变量
+#### 目标变量
 * 在待探测程序的源码中，该位置可见的变量值
 * 如果目标变量是局部变量，可以`$varname`的方式获取
 * 如果目标变量是全局变量，可以通过`@var("varname@src/file.c")`或者`@var("varname", "/path/to/exe/or/lib")`方式获取
 
-##### 目标变量美化
+#### 目标变量美化
 * 特殊的变量
     * `$$vars`：探针点作用域内的每个变量（局部变量 + 函数参数）
     * `$$locals`：探针点作用域内的局部变量
@@ -154,7 +158,7 @@ probe kernel.function("*@net/socket.c").return {
     * 使用 -> 操作符获取 
     * e.g. `printf("%s\n", $file->f_pos_lock$`
 
-##### @cast 目标变量类型转换
+#### @cast 目标变量类型转换
 * 使用时机：
     * 目标变量是 void 指针
     * tapset中函数的参数使用long类型，来代替有类型的指针
@@ -163,7 +167,7 @@ probe kernel.function("*@net/socket.c").return {
   @cast(task, “taskstruct”, “kernel<linux/sched.h>”)->tgid
   ```
 
-##### @defined 检查目标变量的可用性
+#### @defined 检查目标变量的可用性
 * 程序源码随着演进，可用的目标变量可能会发生变化
 * 通过@defined 加三目运算，选择合适的可用变量
 * e.g.
@@ -171,7 +175,7 @@ probe kernel.function("*@net/socket.c").return {
     write_access = (@defined($flags) ? $flags & FAULT_FLAG_WRITE : $write)
   ```
 
-#### 关联数组
+### 关联数组
 * 作用：存储统计信息
 * 关联数组是一组唯一的键，数组中的每个键都有一个与之关联的值。即dict字典。
 * 最多可以指定九个索引表达式
@@ -181,7 +185,7 @@ probe kernel.function("*@net/socket.c").return {
   device[pid(),execname(),uid(),ppid(),"W"] = devname  # 对应C语言的数组，实际是获取 device[pid()][execname()][uid()][ppid()]["W"]
   ```
 
-##### 遍历数组
+#### 遍历数组
 * 定义：
   ```
   foreach (element in array_name)    # 注意：不需要花括号 {}
@@ -191,10 +195,10 @@ probe kernel.function("*@net/socket.c").return {
 * 正序、逆序遍历：`foreach (element in array_name+)`、`foreach (element in array_name-)`
 * 限定遍历的元素数量：`foreach (element in array_name+ limit 2)`
 
-##### 删除数组元素
+#### 删除数组元素
 `delete array_name[element]`、`delete array_name`
 
-##### 数组统计聚合
+#### 数组统计聚合
 * 添加统计聚合值 array_name[element] <<< value：`reads[execname()] <<< $count` （注意：与直接赋值的区别在于，<<< 实际是将每次的结果单独存到关联数组对应的键中）
 * count：返回每个唯一键存储的值的数量 `@count(reads[execname()])`
 * sum
@@ -202,11 +206,11 @@ probe kernel.function("*@net/socket.c").return {
 * max
 * avg
 
-##### 关联数组的可视化
+#### 关联数组的可视化
 * 线性直方图：`print( @hist_log(histogram) )`
 * 2为底对数直方图：`print( @hist_linear(reads, 0, 1024, 100) )`
 
-#### 高频常用函数
+### 高频常用函数
 * printf() 格式化打印
 * println() 格式化打印带换行
 * tid() 当前线程ID
@@ -219,7 +223,7 @@ probe kernel.function("*@net/socket.c").return {
 * probefunc() 探测点函数名称
 
 
-### 六、stap++ 解读
+## 六、stap++ 解读
 * stap++ 使用Perl对stap进行了更高层的统一封装，主要有如下优化：
     * 变量替换系统
     * 自动处理动态库依赖
@@ -229,7 +233,7 @@ probe kernel.function("*@net/socket.c").return {
 * 另外，该仓库针对nginx、lua、luajit 添加了对应的tapset库，方便进行测试
 * [官方地址](https://github.com/openresty/stapxx)
 
-#### stap++ 源码解读：
+### stap++ 源码解读
 ```perl
 #!/usr/bin/env perl
 # 使用环境中的perl解释器执行此脚本
@@ -891,7 +895,7 @@ sub quote_sh_args ($) {
 
 ```
 
-### 七、openresty-systemtap-toolkit 解读
+## 七、openresty-systemtap-toolkit 解读
 * openresty-systemtap-toolkit 中的脚本也使用Perl对stap进行了更高层的封装。它与stap++的主要区别在于，这个仓库里面的每个脚本都针对当前stap脚本做了具体的处理，而stap++是对stap脚本的笼统的抽象处理。这样对应的执行方式就发生了变化：
     * stap++ ：stap++  script.stp  -x PID
     * tookit ：perl    perl-script -x PID
@@ -899,8 +903,9 @@ sub quote_sh_args ($) {
 * [官方地址](https://github.com/openresty/openresty-systemtap-toolkit)
 
 
-### 七、stap++、toolkit核心脚本：
-#### stap++核心脚本说明：
+## 八、stap++、toolkit核心脚本
+
+### stap++核心脚本说明
 [lj-lua-stacks.sxx：](https://github.com/openresty/stapxx/blob/master/samples/lj-lua-stacks.sxx) CPU统计工具，获取lua代码堆栈统计
 
 [sample-bt-leaks.sxx：](https://github.com/openresty/stapxx/blob/master/samples/sample-bt-leaks.sxx) 内存工具统计，对glibc内置函数（malloc、calloc、realloc）进行的内存分配采集回溯信息，查看未被释放的内存（一般需要两次采集来进行差异分析）
@@ -915,7 +920,7 @@ sub quote_sh_args ($) {
 
 [ngx-upstream-err-log.sxx：](https://github.com/openresty/stapxx/blob/master/samples/ngx-upstream-err-log.sxx) 排查`upstream prematurely closed connection while`等upstream问题
 
-#### toolkit核心脚本说明：
+### toolkit核心脚本说明
 [sample-bt：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/sample-bt) CPU统计工具，获取任意进程（nginx）进行用户态或者内核态采样。输出是汇总后的调用栈（按照总数）
 
 [sample-bt-off-cpu：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/sample-bt-off-cpu) CPU统计工具，对进程级别的off-cpu的采样统计
@@ -924,7 +929,7 @@ sub quote_sh_args ($) {
 
 [ngx-phase-handlers：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/ngx-phase-handlers) 按照真实执行顺序，打印出实际注册的phase和对应的handler。可以用来解决配置handler顺序相关问题。
 
-辅助工具：
+### 辅助工具
 
 [check-debug-info：](https://github.com/openresty/openresty-systemtap-toolkit/blob/master/check-debug-info) 检查当前进程中使用的so文件，哪些没有debuginfo\dwarf信息
 
