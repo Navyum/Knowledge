@@ -4,7 +4,6 @@
   - [如何做职业规划](个人思考/如何做职业规划.md)
   - [如何养成微习惯](个人思考/如何养成微习惯.md)
   - [如何写好PPT](个人思考/如何写好PPT.md)
-  - [如何写晋升材料](个人思考/如何写晋升材料.md)
   - [职场方法论](个人思考/职场方法论.md)
 - 📁 大模型LLM
   - 📁 00.概念
@@ -57,6 +56,7 @@
   - [jsdeliver](工具武器库/jsdeliver.md)
   - [mac系统生成icns图标](工具武器库/mac系统生成icns图标.md)
   - [markdown高级技巧](工具武器库/markdown高级技巧.md)
+  - [Mermaid时序图控制语法完全指南](工具武器库/Mermaid时序图控制语法完全指南.md)
   - [paypal支付](工具武器库/paypal支付.md)
   - [piclist](工具武器库/piclist.md)
   - [关于GEO优化](工具武器库/关于GEO优化.md)
