@@ -39,7 +39,7 @@ star: true
 ### 业务方出现的问题：
 在跑脚本时，使用curl命令行进行接口调用，对nginx的输出结果进行保存，但是出现报错：`curl: (18) transfer closed with outstanding read data remaining`。保存的结果文件里面记录正常。
 
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/22236647388dc056bff4a58ab963567b.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/22236647388dc056bff4a58ab963567b.png" width="80%"></p>
 
 
 ### nginx配置
@@ -67,7 +67,7 @@ location = /test {
 
 ### 分析过程：
 #### 1. 通过tcpdump进行抓包，在wireshark中打开
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/d0a0640c241eb51617709e57acd76b73.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/d0a0640c241eb51617709e57acd76b73.png" width="80%"></p>
 
 #### 2. 解读
 * 30号包显示，最终由服务端（10.8.4.199）主动发送FIN断开TCP连接

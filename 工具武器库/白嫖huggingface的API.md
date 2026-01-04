@@ -18,36 +18,36 @@ categories:
 ### 经过：
 在使用Yank Note的 AI Extension时，发现文本转图片的端点是可以免费使用的，我忽然对此产生了兴趣
 免费的配置：
-<p align = "center"><img  src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/e1e56ea562c1d8593a2bd9842d9d62eb.png" width="40%" ></p>
+<p align = "center"><img  src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/e1e56ea562c1d8593a2bd9842d9d62eb.png" width="40%" ></p>
 
 
 带着好奇，我直接打开对应的端点[https://black-forest-labs-flux-1-schnell.hf.space](https://black-forest-labs-flux-1-schnell.hf.space)：
 端点地址：
-<p align = "center"><img  src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/af902ebd4e64aa4bd9632a6fe14f85f0.png" width="40%" /></p>
+<p align = "center"><img  src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/af902ebd4e64aa4bd9632a6fe14f85f0.png" width="40%" /></p>
 
 好家伙，发现了老朋友gradio（huggingface上大部分的space应该都是基于gradio实现的界面吧🙂）
 
 直接F12打开开发者模式，跑一边，查看下网络请求
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/2dd79c98e1950e7539509a224eb9fc50.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/2dd79c98e1950e7539509a224eb9fc50.png" width="60%"></p>
 
 此时发现domain就是对应的端点地址：https://black-forest-labs-flux-1-schnell.hf.space/queue/data?session_hash=iy3znn5avof
 ，并且后面携带了path：/queue/data以及session信息。这些先不管，后面看gradio官方文档可以看到
 
 
 我们从huggingface首页，搜索其他的文生图的space
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/cba1851e98c2153905c218918a51d715.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/cba1851e98c2153905c218918a51d715.png" width="60%"></p>
 
 我对MIDJOURNEY比较感兴趣，所以就直接打开它[https://huggingface.co/spaces/mukaist/Midjourney](https://huggingface.co/spaces/mukaist/Midjourney)
 
 直接F12打开开发者模式，跑一边，查看下网络请求
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/8364c25597acd584ab20ac27a847f22a.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/8364c25597acd584ab20ac27a847f22a.png" width="60%"></p>
 
 此时我们看到，midJourney的这个也是基于SSE协议，并且可以找到对应的端点为：https://mukaist-midjourney.hf.space
 该地址的后面也携带了path：/queue/data以及session信息
 
 接下来，我们对比下这两个SSE协议返回的EventStream的差异
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ac95291fa37db887231d839b16137305.png" width="60%"></p>
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/c4fe9d7aec8aa9f021e4b6281b876d6a.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/ac95291fa37db887231d839b16137305.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/c4fe9d7aec8aa9f021e4b6281b876d6a.png" width="60%"></p>
 
 直接找到msg为`process_completed`的这条stream，右键copy message，直接复制出来
 ```json 
@@ -174,13 +174,13 @@ return { url, method: 'GET' }
 ```
 
 然后，尝试生成一个图片，结果报错了
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/5c25a986c5b4da4ce9da18590cda2435.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/5c25a986c5b4da4ce9da18590cda2435.png" width="60%"></p>
 
 从错误信息看，提示对应端点没有对应的fn_index。
 
 我的第一反应是，是不是fn_index设置的有问题，我查看了gradio中的请求，发现两者确实有差异：
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ce4a00f834d85acb8abbc66e9997ebf2.png" width="60%"></p>
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/2ff39765f9b67616dd1b0bd9a8553e48.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/ce4a00f834d85acb8abbc66e9997ebf2.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/2ff39765f9b67616dd1b0bd9a8553e48.png" width="60%"></p>
 
 其中一个是fn_index为2，另一个fn_index为3
 
@@ -201,7 +201,7 @@ const submission = await client.submit('/infer', {
 我们可以看到这段代码实际使用submit方法，请求了path为/infer。尝试找一下gradio的submit的参数说明
 官方地址：[https://www.gradio.app/docs/js-client](https://www.gradio.app/docs/js-client)
 仅找到一点信息：
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/d528d39711a5b4c4d77ad7c305d14a2f.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/d528d39711a5b4c4d77ad7c305d14a2f.png" width="60%"></p>
 
 搜索官方文档没有找到任何fn_index相关的信息
 
@@ -221,8 +221,8 @@ const submission = await client.submit('/infer', {
 
 通过client.view_api()，获取到flux和midjourney各自实现的方法：
 
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/f5ddf4154012718ab7442196a4c438a1.png" width="60%"></p>
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/38666ebff36dfb4430ebd5a1d1af9d17.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/f5ddf4154012718ab7442196a4c438a1.png" width="60%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/38666ebff36dfb4430ebd5a1d1af9d17.png" width="60%"></p>
 
 果然如所料，各自的实现接口存在差异，flux的是`/infer`，而midjourney为`/run`。另外新的发现就是parameters的一些额外说明，这样我们在调用接口是就可以按照这个说明来实现了。
 

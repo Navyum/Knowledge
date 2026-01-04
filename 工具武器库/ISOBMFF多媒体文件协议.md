@@ -58,10 +58,10 @@ ISOBMFF文件由称为"box"的组件组成：
 ### 文件结构示例
 
 **MP4文件结构：**
-![Img](https://raw.staticdn.net/Navyum/imgbed/main/IMG/a5358213a7bd310ccc5c958e840907bb.png){width="60%"}
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@main/IMG/a5358213a7bd310ccc5c958e840907bb.png){width="60%"}
 
 **HEIC文件结构：**
-![Img](https://raw.staticdn.net/Navyum/imgbed/main/IMG/24111dab3038b2ed6f74cb98b73f5ca6.png){width="60%"}
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@main/IMG/24111dab3038b2ed6f74cb98b73f5ca6.png){width="60%"}
 
 ### 容器格式规范
 

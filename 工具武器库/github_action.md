@@ -56,7 +56,7 @@ star: true
 
 * 排查过程：
     * 官方说明：
-    ![](https://raw.staticdn.net/Navyum/imgbed/main/IMG/2bde3c0d77c9beeeaecf5e32b1b3e9c7.png){width="60%"}
+    ![](https://cdn.jsdelivr.net/gh/Navyum/imgbed@main/IMG/2bde3c0d77c9beeeaecf5e32b1b3e9c7.png){width="60%"}
     * 官方主要是出于防止循环依赖导致资源浪费考虑所以这样设计。(`请确保不要创建递归或意外的工作流程`)
 
 

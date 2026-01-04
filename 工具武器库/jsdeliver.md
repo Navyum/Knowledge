@@ -42,7 +42,7 @@ e.g. https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/2ef23a6d2026c74ef182788fb
 ```
 https://raw.staticdn.net/[GitHub用户名]/[仓库名]/[标签或分支]/[文件路径]
 ```
-e.g. https://raw.staticdn.net/Navyum/imgbed/pic/IMG/2ef23a6d2026c74ef182788fb9ff7ccc.png
+e.g. https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/2ef23a6d2026c74ef182788fb9ff7ccc.png
 
 
 ## 搭配 picGo 使用

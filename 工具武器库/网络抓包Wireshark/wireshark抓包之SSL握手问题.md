@@ -68,15 +68,15 @@ proxy_ssl_name "upstream-domain-name";
 
 ### 分析过程：
 1. 复现问题：
-    <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/948a66b5573e0091700f8bdc3696a561.png" width="80%"></p>
+    <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/948a66b5573e0091700f8bdc3696a561.png" width="80%"></p>
 2. 查看域名解析情况：
-    <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/46a1f13e9f01859b312094dfa5fbe24b.png" width="80%"></p>
+    <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/46a1f13e9f01859b312094dfa5fbe24b.png" width="80%"></p>
 3. 通过tcpdump进行抓包，在wireshark中打开
-    <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/7c6e0c2d6131e36333e8c24a35cdefb8.png" width="80%"></p>
-    <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/517590ec728251d6e3c2cc816e4a26e2.png" width="80%"></p>
+    <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/7c6e0c2d6131e36333e8c24a35cdefb8.png" width="80%"></p>
+    <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/517590ec728251d6e3c2cc816e4a26e2.png" width="80%"></p>
 
 4. 查看详细失败：
-    <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/4f15c3123bfaa068f9dc582112407e3b.png" width="80%"></p>
+    <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/4f15c3123bfaa068f9dc582112407e3b.png" width="80%"></p>
 5. TLS握手失败错误码 40解读：
     * 根本原因是 SNI 缺失，因为nginx在反向代理时，如果使用的是负载均衡的backend，默认会把host值、SNI传成backend的名称（user_cs_cn_backend），而不是真实的域名（巨坑）。
     * SNI解读：

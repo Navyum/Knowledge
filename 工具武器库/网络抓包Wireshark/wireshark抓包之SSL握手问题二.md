@@ -62,13 +62,13 @@ upstream middleground_workonly_backend {
 
 ### 分析过程：
 1. 复现问题：
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/567b0cd154d0ac2ed69d1d9b06dbb265.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/567b0cd154d0ac2ed69d1d9b06dbb265.png" width="80%"></p>
 2. 查看域名解析情况：
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/70a5358e761ebb8c11e611713d5eef22.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/70a5358e761ebb8c11e611713d5eef22.png" width="80%"></p>
 3. 通过tcpdump进行抓包，在wireshark中打开
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/a5d1a947bf4baba12c9be63539174ed9.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/a5d1a947bf4baba12c9be63539174ed9.png" width="80%"></p>
 4. 查看详细失败：
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/3f57168739ae9cea17e33cebca34d773.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/3f57168739ae9cea17e33cebca34d773.png" width="80%"></p>
 
 5. TLS握手失败错误码 80 解读：
     * Internal Error：服务端内部错误。这个错误比较坑的地方就是，过于通用，没有给到具体错误位置。
@@ -88,7 +88,7 @@ upstream middleground_workonly_backend {
     #查看SSL/TSL握手信息
     openssl s_client -connect domain:443 -debug
    ```
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/4d2a758cf46139dfa3d0dddd480b38bf.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/4d2a758cf46139dfa3d0dddd480b38bf.png" width="80%"></p>
 
 
    使用openssl解析证书查看有效期：
@@ -96,7 +96,7 @@ upstream middleground_workonly_backend {
     #查看证书校验信息  -noout 不输出证书内容
     openssl s_client -connect domain:443  -servername domain | openssl x509 -noout -dates
    ```
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/bb156771d79dc6cc33054eb5ec11f759.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/bb156771d79dc6cc33054eb5ec11f759.png" width="80%"></p>
 
    最终确定证书已经过期！！
    

@@ -18,14 +18,14 @@ icon: logos:kafka-icon
 ---
 
 ### 整体架构：
-<img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/09d7819af5b62fff56e36721d01d7c4f.png" width =60% >
+<img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/09d7819af5b62fff56e36721d01d7c4f.png" width =60% >
 
 ### 高性能：
 #### 减少资源竞争：
 * 将消息按照业务拆分到多个`topic`。减少生产者和消费者对topic的读、写竞争
 * 将topic再拆分为多个`partition`。每个消费者负责一个partition
-<img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/f8284857339d397d22154713ddd2a9ae.png" width =60% >
-<img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/4e5f3f34a51e479142bca13f96b9c579.png" width =60% >
+<img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/f8284857339d397d22154713ddd2a9ae.png" width =60% >
+<img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/4e5f3f34a51e479142bca13f96b9c579.png" width =60% >
 
 #### 使用的高性能技术：
 * PageCache 内核缓冲区
@@ -40,7 +40,7 @@ icon: logos:kafka-icon
     * kafka 按照partition粒度，将topic对应的多个partition分散到多个broker中
     * 这样一个broker拥有多个topic的部分partition数据
     * **存疑？kafka集群的扩容如何进行？**
-    <img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/2f88899b52b6ed6dc5ae53e81de587b8.png" width =60% >
+    <img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/2f88899b52b6ed6dc5ae53e81de587b8.png" width =60% >
 
 ### 高可用：
 * kafka使用replication机制，按照partition粒度，设置replicas副本，这样 partition 就有了主、从的职责区分
@@ -48,7 +48,7 @@ icon: logos:kafka-icon
 * 如何做故障转移：
     * 将Leader partition 和 Follower partition分散到不同的broker中
     * 某个broker故障时，通过zookeeper进行协商出新的Leader partition，实现故障转移
-    <img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ec462fd29aa03e8143bc24d8dcd21f8b.png" width =60% >
+    <img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/ec462fd29aa03e8143bc24d8dcd21f8b.png" width =60% >
 
 ### 持久化、过期策略：
 * 持久化：将内存中的数据存到磁盘
@@ -71,7 +71,7 @@ icon: logos:kafka-icon
     * 消费者消费时，通过offset偏移进行消费位置的定位
 * 组件如何消费：
     * 组与组之间的消费互不影响，新加的组可以从头开始消费
-<img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/6502720c0591ca52d8decde6e0db329f.png" width =60% >
+<img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/6502720c0591ca52d8decde6e0db329f.png" width =60% >
 
 ### 消息的有序消费：
 * 方式1：设置1个Topic只对应1个Partition。并发能力变差。
@@ -85,4 +85,4 @@ icon: logos:kafka-icon
 * zookeeper 负责管理 broker、partition等组件状态信息
 * 定期和broker通信，获取整个kafka集群的状态
 * 进行Leader选举
-<img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/5767625df0abde9c4e8277f158e8f23d.png" width =60% >
+<img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/5767625df0abde9c4e8277f158e8f23d.png" width =60% >

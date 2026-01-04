@@ -28,7 +28,7 @@ star: true
 
 随着ChatGPT、Gemini、DeepSeek、豆包等生成式AI助手的普及，用户获取信息的搜索行为正在经历深刻变革。我们越来越习惯从AI聊天软件、AI终端获取我们需要的信息，传统的搜索引擎正在进行AI化升级。
 
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/f4b973746df3f7bbc9b87afad9bf2a3c.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/f4b973746df3f7bbc9b87afad9bf2a3c.png" width="80%"></p>
 
 **市场数据：** ([数据来自Valuates报告](https://reports.valuates.com/market-reports/QYRE-Auto-3C19486/global-generative-engine-optimization-geo-services))
 - 2024年全球GEO服务市场规模：8.86亿美元
@@ -49,13 +49,13 @@ star: true
 ### 各平台展示效果如下
 
 #### 豆包AI展示
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/4f0bd06a0637571ee50974cd8f3fb4b6.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/4f0bd06a0637571ee50974cd8f3fb4b6.png" width="80%"></p>
 
 #### DeepSeek展示
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/52bd8716db0e437c2ec664596cdf9aac.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/52bd8716db0e437c2ec664596cdf9aac.png" width="80%"></p>
 
 #### Kimi展示
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/991e0f8ef827794ef3f42eddeb641b02.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/991e0f8ef827794ef3f42eddeb641b02.png" width="80%"></p>
 
 
 ## GEO优化实战策略
@@ -99,7 +99,7 @@ star: true
 
 **测试方法：** 我直接向AI提问"任务相关chrome插件推荐"，获取未优化前的推荐结果。这一步很重要，可以让你发现差距在哪里，然后针对性优化。
 
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/1fa308dbb03fe41dbda8ecb9dbdaecd1.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/1fa308dbb03fe41dbda8ecb9dbdaecd1.png" width="80%"></p>
 
 **分析结果：**
 - 豆包推荐内容主要来自CSDN（占比很高）
@@ -143,7 +143,7 @@ star: true
 
 **验证方法：** 重新测试AI推荐结果
 
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/7f5e881e1a1a8094026e6b2246f356dd.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/7f5e881e1a1a8094026e6b2246f356dd.png" width="80%"></p>
 
 **重要发现：**
 仅针对豆包AI优化，其他平台（Kimi、DeepSeek）也获得良好效果。说明：1. 不同AI的搜索底层逻辑相似 2.可通过特定AI的推荐结果进行更深入分析，针对性提升排名。
@@ -160,7 +160,7 @@ star: true
 3. **建立了完整的优化流程**：从调研到执行到验证的完整方法论
 
 一图总结核心流程：
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/168e1ec86102332b4e4bdc1fb3661f13.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/168e1ec86102332b4e4bdc1fb3661f13.png" width="80%"></p>
 
 
 结合本次的GEO经历，以我个人的视角对GEO优化核心步骤做了提炼：

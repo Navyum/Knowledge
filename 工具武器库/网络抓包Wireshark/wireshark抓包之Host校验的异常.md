@@ -59,14 +59,14 @@ upstream aspose_sdk {
 
 ### 分析过程：
 1. 复现问题：
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/6a47790d218ab48980a42da6b727d9a7.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/6a47790d218ab48980a42da6b727d9a7.png" width="80%"></p>
 2. 通过tcpdump进行抓包，在wireshark中打开
    * 请求失败400
-     <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/fe3f14217fb139fff3aa4318ae06a554.png" width="80%"></p>
+     <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/fe3f14217fb139fff3aa4318ae06a554.png" width="80%"></p>
    * 请求头信息
-     <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/99522b1c9e8360f7f04775fe5583d6c9.png" width="80%"></p>
+     <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/99522b1c9e8360f7f04775fe5583d6c9.png" width="80%"></p>
    * 正常的请求头信息
-     <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/43cabc80eb46e25ee5f2639385e43285.png" width="80%"></p>
+     <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/43cabc80eb46e25ee5f2639385e43285.png" width="80%"></p>
 
 3. 解析抓包结果：
     1. 根据错误码4XX，初步可以断定是客户端（请求端）的问题
@@ -74,7 +74,7 @@ upstream aspose_sdk {
     3. 对比分析正常、异常的抓包请求，分析差异点（关键步骤）
     4. 最终发现仅Host存在差异。此时可以进行实验操作，对Host进行修改再测试，最终发现是Host不正确，被nginx使用成了backend的名称aspose_sdk。
        相关资料：[nginx 官方文档](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header)
-       <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/accb47cd32248ea3c59922964d60872b.png" width="80%"></p>
+       <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/accb47cd32248ea3c59922964d60872b.png" width="80%"></p>
 
 4. 解决方案：
     1. 将upstream的名称去除下划线_，aspose_sdk改为asposeSdk

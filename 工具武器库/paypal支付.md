@@ -28,7 +28,7 @@ categories:
 
 ### 高级信用卡支付（调研）：
 * 问题：card-fields实际使用的是confirm-payment-source进行付款人信息更新，且内容明文
-  ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/e379d59bd69478511ea8803d0ac5aab3.png)
+  ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/e379d59bd69478511ea8803d0ac5aab3.png)
 
 * 样例代码实现：
     ```html
@@ -148,7 +148,7 @@ categories:
 * 参考：[https://developer.paypal.com/sdk/js/reference/#buttons](https://developer.paypal.com/sdk/js/reference/#buttons)
 * 存在的问题：
     * 跳转页用户待填写内容过多
-      ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/b55ddffd98683307a4e70f5dfd4a4d22.png)
+      ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/b55ddffd98683307a4e70f5dfd4a4d22.png)
 
 * 样例代码：
   ```html

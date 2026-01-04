@@ -14,7 +14,7 @@ categories:
 ## systemTap原理
 * 将stp文件编译为C文件，再将C文件编译为内核模块.ko文件，将.ko文件加载到内核中，最终利用内核提供的 `kprobes 机制`来设置探测点，采集数据存储到`probe.out`，从而进行系统性能分析。
 ### 一、systemTap运行流程
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/031aa72127709b2fa27f4e1fda97d28a.png"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/031aa72127709b2fa27f4e1fda97d28a.png"></p>
 
 #### 1.Parse（词法语法分析）
 #### 2.Elaborate（语义分析）
@@ -37,7 +37,7 @@ categories:
 
 
 ### 二、systemtap关系图
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/aac61ecde949c46d79919400cdf289b9.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/aac61ecde949c46d79919400cdf289b9.png" width="80%"></p>
 
 ### 三、systemtap存在的问题：
 * 基于内核模块技术，在RHEL以外的系统上都不可靠

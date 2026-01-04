@@ -84,9 +84,9 @@ func addHeaders(req *http.Request, header http.Header) {
 2. 因为改代码的代价最小，所以先通过改代码逻辑的方式，逐个确认是否可以解决问题；很不幸没有解决（包括使用Sling.Set 设置 Host）。
 3. 直接通过tcpdump进行抓包，在wireshark中打开
    * 请求失败 404
-     <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/1d72e52a50f04678e1ec0d3085361f99.png" width="80%"></p>
+     <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/1d72e52a50f04678e1ec0d3085361f99.png" width="80%"></p>
    * 请求头信息
-     <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/57b6203b94dcbf4549510f08a036ce54.png" width="80%"></p>
+     <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/57b6203b94dcbf4549510f08a036ce54.png" width="80%"></p>
 4. 解析抓包结果：
    直接就可以看出实际请求的 Host 跟我们在代码中设置的不符合，即代码的设置没有生效！！
 

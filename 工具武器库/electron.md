@@ -62,7 +62,7 @@ Apple App专用密码用于自动化工具（如GitHub Actions）进行身份验
 - 专用密码只能查看一次，无法再次查看
 - 如果忘记密码，只能重新创建
 
-![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/b37c8ccf61de24109b8a501bdf8d1b10.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/b37c8ccf61de24109b8a501bdf8d1b10.png)
 
 ## 2. 申请开发者证书
 
@@ -94,7 +94,7 @@ Apple App专用密码用于自动化工具（如GitHub Actions）进行身份验
    - 必须妥善保管此密码
    - 如果未设置密码，则后续`CSC_KEY_PASSWORD`设置为空字符串
 
-   ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/2ff9f323ad970b4e00a15f51c77c039e.png)
+   ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/2ff9f323ad970b4e00a15f51c77c039e.png)
 
 4. **导出证书**
    - 申请完成后，右键点击证书
@@ -102,7 +102,7 @@ Apple App专用密码用于自动化工具（如GitHub Actions）进行身份验
    - 命名为`developerID_application.p12`
    - 设置导出密码（通常与申请时的密码相同）
 
-   ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/f9dd7e68637a10f63deb44233dc3044e.png)
+   ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/f9dd7e68637a10f63deb44233dc3044e.png)
 
 ### 2.2 方式二：使用OpenSSL命令行
 
@@ -132,15 +132,15 @@ Apple App专用密码用于自动化工具（如GitHub Actions）进行身份验
    - 访问：[https://developer.apple.com/account/resources/certificates/add](https://developer.apple.com/account/resources/certificates/add)
    - 选择"Developer ID Application"证书类型
 
-   ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/40c91f2cadce9ab546bb12d14258abb9.png)
+   ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/40c91f2cadce9ab546bb12d14258abb9.png)
 
    - 选择"Previous SUB-CA"，然后点击"Choose File"上传刚才的`my.csr`文件
 
-   ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/6a0d67e689a7400b0b646571339069e6.png)
+   ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/6a0d67e689a7400b0b646571339069e6.png)
 
    - 下载最终证书文件，文件名为`developerID_application.cer`
 
-   ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/a107cd387db14603725f8ff0c9a9e8f3.png)
+   ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/a107cd387db14603725f8ff0c9a9e8f3.png)
 
 4. **生成PKCS12证书**
    ```bash
@@ -220,7 +220,7 @@ openssl base64 -in developerID_application.p12 -out certificate-base64.txt
 - `Error: Unable to process file command 'env' successfully.`
 - `Error: Invalid format '***'`
 
-![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/0f3e0ce016f348e14a8e8064828b7be8.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/0f3e0ce016f348e14a8e8064828b7be8.png)
 
 **问题分析：** 
 生成的证书Base64字符串包含大量换行符，导致通过`echo`导入`GITHUB_ENV`变量失败。

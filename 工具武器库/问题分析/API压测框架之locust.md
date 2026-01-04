@@ -54,7 +54,7 @@ star: true
     * 压力区域：负载增加后系统开始优雅地降级，标志着性能问题的开始
     * 性能拐点：性能下降突变的地方
 * 样例：
-  <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ce7e841d4b98bc0e8f75da0a4486a1a6.png" width="80%"></p>
+  <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/ce7e841d4b98bc0e8f75da0a4486a1a6.png" width="80%"></p>
 
 ### 2.2 直方图（Histograms）
 * 说明：描绘测试数据的分布情况，将数据分成多个区间，显示每个区间的频数或频率。
@@ -65,7 +65,7 @@ star: true
 * 关键区域：
     * 最长的矩形：表示大多数数据点聚集在此处
 * 样例：
-  <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/fe38d150664fe996b004c0b1ede3b7b0.png" width="80%"></p>
+  <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/fe38d150664fe996b004c0b1ede3b7b0.png" width="80%"></p>
 
 ---
 
@@ -182,10 +182,10 @@ class OCRUser(HttpUser):
 #### 测试配置
 **注意**：因为是要对比两个接口的性能，所以我选择的是`最佳性能基准`，选择单个用户的测试场景
 
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/44b0f5203e636da73346e6d160066ac4.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/44b0f5203e636da73346e6d160066ac4.png" width="80%"></p>
 
 #### 测试结果可视化
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/0a4390c21d9dbb3793e9203e0e2d6cbc.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/0a4390c21d9dbb3793e9203e0e2d6cbc.png" width="80%"></p>
 
 #### 测试结论
 - 在常见的300～500kb的图片内，对应接口的HEIF格式比JPG格式耗时大约高200ms左右
@@ -206,10 +206,10 @@ class OCRUser(HttpUser):
 ```
 
 #### 负载配置
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/73f832c4bb5aa117f4280509b0b44b45.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/73f832c4bb5aa117f4280509b0b44b45.png" width="80%"></p>
 
 #### 测试结果可视化
-<p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ed5a369c68cd91066c3f79c2e8ac2dfc.png" width="80%"></p>
+<p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/ed5a369c68cd91066c3f79c2e8ac2dfc.png" width="80%"></p>
 
 #### 测试结论
 - 对应接口的最高RPS为2.4，即使用户数量增加

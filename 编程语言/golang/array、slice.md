@@ -30,7 +30,7 @@ type slice struct {
 }
 ```
 3. slice内存模型：
-![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/257469b8531d78b14872db6b5e5920e5.png)
+![图片](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/257469b8531d78b14872db6b5e5920e5.png)
 
 
 4. slice 截取特点：

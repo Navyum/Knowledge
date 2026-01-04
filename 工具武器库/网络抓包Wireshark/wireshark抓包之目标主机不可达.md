@@ -39,16 +39,16 @@ star: true
 
 ### 分析过程：
 1. 复现问题：
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/3883d164aa2c9ecf45af56d4ebd05973.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/3883d164aa2c9ecf45af56d4ebd05973.png" width="80%"></p>
 
 2. 因为服务本身3000端口正常，直接ping测试网络，网络连接正常。
-   <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/5d2b987afda1677b00a4e044f1c3e109.png" width="80%"></p>
+   <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/5d2b987afda1677b00a4e044f1c3e109.png" width="80%"></p>
 
 1. 此刻我已经蚌住了。只能采用tcpdump进行抓包，在wireshark中打开分析协议[firewall.pcap](firewall.pcap)
    * wireshark解析结果：
-     <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/0ecf9df6125bc5e61d81d4e678e0c5e9.png" width="80%"></p>
+     <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/0ecf9df6125bc5e61d81d4e678e0c5e9.png" width="80%"></p>
    * 错误信息：
-     <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/6b8ea5d9a4ba674e9857f68d898b7a99.png" width="80%"></p>
+     <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/6b8ea5d9a4ba674e9857f68d898b7a99.png" width="80%"></p>
 
 4. 解析抓包结果：
     1. 总共获取到两个包，1号包为客户端尝试TCP握手包（Seq=0），2号包为ICMP包。
@@ -59,7 +59,7 @@ star: true
        Code: 10 (Host administratively prohibited)
        ```
     4. 因为3000端口正常，此时我第一个就是怀疑是不是网络链路上存在限制导致的80端口无法访问。再次使用traceroute进行检查
-       <p align="center"><img src="https://raw.staticdn.net/Navyum/imgbed/pic/IMG/a4f3281b16efce5b97fe969da75a7d78.png" width="80%"></p>
+       <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/a4f3281b16efce5b97fe969da75a7d78.png" width="80%"></p>
     5. 为了保持和curl中错误的一致性，所以我强制使用ICMP协议进行链路检测（备注：traceroute默认是使用UDP协议的）。结果证明，整个链路没有任何问题，抓包获取到的ICMP错误就是服务器返回的。此刻已经定位到出现问题的来源了。（备注：命令行中指定的80端口其实不生效，因为ICMP协议本身没有Port这个概念，这个和TCP、UDP不一样，指定ICMP时，命令自动忽略-p选项）
     6. 查找ICMP官方RFC资料
        
@@ -101,7 +101,7 @@ star: true
 ### 延伸：
 #### 关于ICMP协议
 * 即 Internet Control Message Protocol，互联网控制报文协议
-![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/f0bf192a1cf0f08545024033e15b4ed5.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/f0bf192a1cf0f08545024033e15b4ed5.png)
 
 * 查询报文类型：
     - 8：主动查询

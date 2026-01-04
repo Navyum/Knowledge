@@ -26,7 +26,7 @@ HEIF（High Efficiency Image Format）是一种高效的图像格式，基于HEV
 ### 技术背景
 
 #### HEIF编码解码原理
-![Img](https://raw.staticdn.net/Navyum/imgbed/main/IMG/21139a95b55bedab5c5a1eaf9a9c4f0b.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@main/IMG/21139a95b55bedab5c5a1eaf9a9c4f0b.png)
 
 #### 支持的编码标准
 - **H.264/MPEG-4 AVC**：传统视频编码标准

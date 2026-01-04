@@ -17,7 +17,7 @@ icon: simple-icons:docker
 
 * client-server 架构
 * `docker client`使用REST API，通过UDS或者network，与`dockerd`进行通信
-![Img](https://raw.staticdn.net/Navyum/imgbed/main/IMG/a2959a6248c161ea2a84e671c8a5d38d.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@main/IMG/a2959a6248c161ea2a84e671c8a5d38d.png)
 
 ## Docker Registries
 * 用来存储Docker Images
@@ -90,7 +90,7 @@ icon: simple-icons:docker
 ### Volumes/bind mounts/tmpfs
 * 作用：将容器中的数据持久化，volumes不会随着container销毁而消失
 * 图解：
-![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/385b08ca5b077a3bf9bced726581755b.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/385b08ca5b077a3bf9bced726581755b.png)
 * 差异对比：
 |方式|管理方式中文名|目录位置|数据隔离|使用场景|
 |:----|:----|:----|:----|:----|
@@ -186,7 +186,7 @@ $ docker inspect --format '{{join .Args " , "}}'
 
 ## Build 镜像
 * client-server架构图：
-![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/83843a52e15b6b08952df8a8999ce5e3.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/83843a52e15b6b08952df8a8999ce5e3.png)
 ### 传统build VS buildx
 * docker build 是 Docker 的标准构建命令
 * ✅ docker buildx build 是使用`docker buildkit`进行构建，支持多平台构建、并行构建，是下一代构建工具
@@ -315,7 +315,7 @@ $ docker inspect --format '{{join .Args " , "}}'
             * 并且会先启动shell作为1号进程，然后在shell环境下执行对应命令
             * docker stop 不够优雅，docker内的程序并不能基于外部的退出信号优雅退出
     * `CMD 和 ENTRYPOINT的组合`：
-    ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/832031b8fb17ede21a4e43cd2b00fdd0.png)
+    ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/832031b8fb17ede21a4e43cd2b00fdd0.png)
 
 * **RUN**
     * 通过执行命令，解决镜像构建过程中的依赖

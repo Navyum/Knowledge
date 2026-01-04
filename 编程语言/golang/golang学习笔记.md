@@ -290,10 +290,10 @@ tag:
 
 ### go编译过程
 从源文件到可执行目标文件的转化过程：
-![compile](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/b290f1ee1f29670d608c425edfec2d96.png)
+![compile](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/b290f1ee1f29670d608c425edfec2d96.png)
 
 ### go编译器优化函数
-![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/85ada42f30bc8039720da3c7c03a1bbd.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/85ada42f30bc8039720da3c7c03a1bbd.png)
 
 ### GC机制（对堆上的对象的清理）
 * GC算法分类：
@@ -344,7 +344,7 @@ tag:
     - 波面推进：
         - 对三色对象的回收过程其实是一个**波面**不断前进的过程。这个波面同时也是黑色对象和白色对象的边界，灰色对象就是这个波面。
         - 以灰色对象为波面，将黑色对象和白色对象分离，使波面不断向前推进，直到所有可达的灰色对象都变为黑色对象为止的过程。
-          ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/53c95ad4fd4efeab51fee825eec022ba.png)
+          ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/53c95ad4fd4efeab51fee825eec022ba.png)
     - STW：
         - `Stop the World` or `Start the World`
         - STW在垃圾回收过程中：
@@ -360,7 +360,7 @@ tag:
         - 正确性的含义：
             - 不应出现对象的丢失
             - 不应错误的回收还不需要回收的对象
-        - 不正确例子：![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/826ab9aff0dd5f0077ccdeef32bbd96f.png)
+        - 不正确例子：![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/826ab9aff0dd5f0077ccdeef32bbd96f.png)
             当A成为波面时，又被C引用了，从而导致B没有被扫描到，最终B被错误回收
     - 如何破坏正确性：**同时满足以下条件**：
         * `条件1`: 赋值器修改对象图，导致**某一黑色对象引用白色对象**；
@@ -382,14 +382,14 @@ tag:
                 - 具体做法：为了防止黑色对象指向白色对象，把对应的白色对象先变成灰色，然后在标记终止阶段STW时，重新扫描这些灰色对象。
                 - 时机：所有写操作前
                 - 对象：着色被引用者
-                ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/7951eca316c22aebc3f3632a045a296d.png)
+                ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/7951eca316c22aebc3f3632a045a296d.png)
 
             - Yuasa 删除屏障：
                 - 避免`条件2`成立
                 - 具体做法：为了防止丢失从灰色对象到白色对象的路径，将变为黑色的对象再次变成灰色，即波面发生后退。
                 - 时机：所有写操作后
                 - 对象：着色引用者
-                ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ae454158ac349742cf7217c472eed8ba.png)
+                ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/ae454158ac349742cf7217c472eed8ba.png)
                 - 优缺点：不需要标记结束阶段的重新扫描。但是因为会拦截写操作，从而导致波面的退后，产生“冗余”的扫描。
 
     - 混合写屏障：
@@ -442,7 +442,7 @@ tag:
 |内存同步访问|同系统调用类似，atomic，mutex，channel 操作会阻塞goroutine|
 
 ### go runtime、program、os kernel的关系
-![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/48bd79bfd4ffca1fc578a6698cf9acf0.png)
+![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/48bd79bfd4ffca1fc578a6698cf9acf0.png)
 * runtime有点类似用户跟系统交互的中间代理
 * runtime维护所有的 goroutines，通过scheduler来进行调度
 * scheduler 相关结构体组成：
@@ -452,16 +452,16 @@ tag:
     * `sched` 总览全局
 ### GPM
 * GPM状态机：
-    ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/ee5b938c62f75a47aae6c7400f0358f7.png)
+    ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/ee5b938c62f75a47aae6c7400f0358f7.png)
     * G状态机：
-        ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/7718933e3b9eef5324dcfec3ac53aa2b.png)
+        ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/7718933e3b9eef5324dcfec3ac53aa2b.png)
     * P状态机：
-        ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/c1c6bafe989c43be7b23e474d0668f24.png)
+        ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/c1c6bafe989c43be7b23e474d0668f24.png)
     * M状态机：
-        ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/a11695f322399e06a43b359adc2e4148.png)
+        ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/a11695f322399e06a43b359adc2e4148.png)
 
 * GPM完整流程图：
-    ![Img](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/341ae661ef2b4867952a913a4681448f.png)
+    ![Img](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/341ae661ef2b4867952a913a4681448f.png)
     1、 GPM 的调度流程从 go func()开始创建一个 goroutine,新建的G优先放入P的本地队列保存待执行的 goroutine（流程 2），当 M 绑定的 P 的的局部队列已经满了之后就会把 goroutine 放到全局队列（流 程 2-1）
     2、每个 P 和一个 M 绑定，M 是真正的执行 P 中 goroutine 的实体（流程 3）， M 从绑定的 P 中的局部队列获取 G 来执行
     3、当 M 绑定的 P 的局部队列为空时，M 会从全局队列获取到本地队列来执行 G （流程 3.1），当从全局队列中没有获取到可执行的 G 时候，M 会从其他 P 的局部队列中偷取 G 来执行（流程 3.2），这种从其他 P 偷的方式称为 work stealing

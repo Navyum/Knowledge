@@ -6,9 +6,9 @@
 
 隔离方式：
 
-1. 按服务种类![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/a8213062e2f9c10c4d208eda7a8ce6fd.png)
+1. 按服务种类![图片](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/a8213062e2f9c10c4d208eda7a8ce6fd.png)
 
-2. 按租户![图片](https://raw.staticdn.net/Navyum/imgbed/pic/IMG/c5bc6a096b25a16fad5fe9f7d53d4589.png)
+2. 按租户![图片](https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/c5bc6a096b25a16fad5fe9f7d53d4589.png)
 
 
 
