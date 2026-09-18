@@ -76,8 +76,8 @@ upstream aspose_sdk {
        相关资料：[nginx 官方文档](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_set_header)
        <p align="center"><img src="https://cdn.jsdelivr.net/gh/Navyum/imgbed@pic/IMG/accb47cd32248ea3c59922964d60872b.png" width="80%"></p>
 
-4. 解决方案：
-    1. 将upstream的名称去除下划线_，aspose_sdk改为asposeSdk
+    1. 解决方案：
+    2. 将upstream的名称去除下划线_，aspose_sdk改为asposeSdk
         * 主要是因为上游服务使用的是Springboot Tomcat历史版本问题
         * 说明：https://github.com/spring-projects/spring-boot/issues/13236
     2. 设置正确的Host，`proxy_set_header HOST $host`
