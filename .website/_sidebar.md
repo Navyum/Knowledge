@@ -33,44 +33,59 @@
         - [AGENTS](大模型LLM/05.Harness工程/tinyharness/workspace/AGENTS.md)
       - [README](大模型LLM/05.Harness工程/tinyharness/README.md)
     - 📁 课程
-      - [appendix](大模型LLM/05.Harness工程/课程/appendix.md)
-      - [build-capstone](大模型LLM/05.Harness工程/课程/build-capstone.md)
-      - [case-claude-code](大模型LLM/05.Harness工程/课程/case-claude-code.md)
-      - [case-codex](大模型LLM/05.Harness工程/课程/case-codex.md)
-      - [case-deepseek](大模型LLM/05.Harness工程/课程/case-deepseek.md)
-      - [case-multica](大模型LLM/05.Harness工程/课程/case-multica.md)
-      - [case-openhands](大模型LLM/05.Harness工程/课程/case-openhands.md)
-      - [ch10-observability](大模型LLM/05.Harness工程/课程/ch10-observability.md)
-      - [ch11-model-binding](大模型LLM/05.Harness工程/课程/ch11-model-binding.md)
-      - [ch12-multi-agent](大模型LLM/05.Harness工程/课程/ch12-multi-agent.md)
-      - [ch13-production](大模型LLM/05.Harness工程/课程/ch13-production.md)
-      - [ch2-loop-build](大模型LLM/05.Harness工程/课程/ch2-loop-build.md)
-      - [ch2-loop-claude-code](大模型LLM/05.Harness工程/课程/ch2-loop-claude-code.md)
-      - [ch2-loop-openhands](大模型LLM/05.Harness工程/课程/ch2-loop-openhands.md)
-      - [ch2-loop-paradigms](大模型LLM/05.Harness工程/课程/ch2-loop-paradigms.md)
-      - [ch3-io-build](大模型LLM/05.Harness工程/课程/ch3-io-build.md)
-      - [ch3-io-reliability](大模型LLM/05.Harness工程/课程/ch3-io-reliability.md)
-      - [ch3-io-streaming](大模型LLM/05.Harness工程/课程/ch3-io-streaming.md)
-      - [ch4-tools-aci](大模型LLM/05.Harness工程/课程/ch4-tools-aci.md)
-      - [ch4-tools-build](大模型LLM/05.Harness工程/课程/ch4-tools-build.md)
-      - [ch4-tools-claude-code](大模型LLM/05.Harness工程/课程/ch4-tools-claude-code.md)
-      - [ch4-tools-deepseek](大模型LLM/05.Harness工程/课程/ch4-tools-deepseek.md)
-      - [ch5-ctx-build](大模型LLM/05.Harness工程/课程/ch5-ctx-build.md)
-      - [ch5-ctx-compact](大模型LLM/05.Harness工程/课程/ch5-ctx-compact.md)
-      - [ch5-ctx-principles](大模型LLM/05.Harness工程/课程/ch5-ctx-principles.md)
-      - [ch5-ctx-systemprompt](大模型LLM/05.Harness工程/课程/ch5-ctx-systemprompt.md)
-      - [ch6-perm-build](大模型LLM/05.Harness工程/课程/ch6-perm-build.md)
-      - [ch6-perm-codex](大模型LLM/05.Harness工程/课程/ch6-perm-codex.md)
-      - [ch6-perm-principles](大模型LLM/05.Harness工程/课程/ch6-perm-principles.md)
-      - [ch7-rt-build](大模型LLM/05.Harness工程/课程/ch7-rt-build.md)
-      - [ch7-rt-openhands](大模型LLM/05.Harness工程/课程/ch7-rt-openhands.md)
-      - [ch7-rt-principles](大模型LLM/05.Harness工程/课程/ch7-rt-principles.md)
-      - [ch8-state](大模型LLM/05.Harness工程/课程/ch8-state.md)
-      - [ch9-errors](大模型LLM/05.Harness工程/课程/ch9-errors.md)
+      - 📁 01 基础
+        - [intro](大模型LLM/05.Harness工程/课程/01-基础/intro.md)
+        - [lifecycle](大模型LLM/05.Harness工程/课程/01-基础/lifecycle.md)
+      - 📁 02 Agent循环
+        - [ch2-loop-build](大模型LLM/05.Harness工程/课程/02-agent循环/ch2-loop-build.md)
+        - [ch2-loop-claude-code](大模型LLM/05.Harness工程/课程/02-agent循环/ch2-loop-claude-code.md)
+        - [ch2-loop-openhands](大模型LLM/05.Harness工程/课程/02-agent循环/ch2-loop-openhands.md)
+        - [ch2-loop-paradigms](大模型LLM/05.Harness工程/课程/02-agent循环/ch2-loop-paradigms.md)
+      - 📁 03 模型交互
+        - [ch3-io-build](大模型LLM/05.Harness工程/课程/03-模型交互/ch3-io-build.md)
+        - [ch3-io-reliability](大模型LLM/05.Harness工程/课程/03-模型交互/ch3-io-reliability.md)
+        - [ch3-io-streaming](大模型LLM/05.Harness工程/课程/03-模型交互/ch3-io-streaming.md)
+      - 📁 04 工具系统
+        - [ch4-tools-aci](大模型LLM/05.Harness工程/课程/04-工具系统/ch4-tools-aci.md)
+        - [ch4-tools-build](大模型LLM/05.Harness工程/课程/04-工具系统/ch4-tools-build.md)
+        - [ch4-tools-claude-code](大模型LLM/05.Harness工程/课程/04-工具系统/ch4-tools-claude-code.md)
+        - [ch4-tools-deepseek](大模型LLM/05.Harness工程/课程/04-工具系统/ch4-tools-deepseek.md)
+      - 📁 05 上下文
+        - [ch5-ctx-build](大模型LLM/05.Harness工程/课程/05-上下文/ch5-ctx-build.md)
+        - [ch5-ctx-compact](大模型LLM/05.Harness工程/课程/05-上下文/ch5-ctx-compact.md)
+        - [ch5-ctx-principles](大模型LLM/05.Harness工程/课程/05-上下文/ch5-ctx-principles.md)
+        - [ch5-ctx-systemprompt](大模型LLM/05.Harness工程/课程/05-上下文/ch5-ctx-systemprompt.md)
+      - 📁 06 权限安全
+        - [ch6-perm-build](大模型LLM/05.Harness工程/课程/06-权限安全/ch6-perm-build.md)
+        - [ch6-perm-codex](大模型LLM/05.Harness工程/课程/06-权限安全/ch6-perm-codex.md)
+        - [ch6-perm-principles](大模型LLM/05.Harness工程/课程/06-权限安全/ch6-perm-principles.md)
+      - 📁 07 运行时
+        - [ch7-rt-build](大模型LLM/05.Harness工程/课程/07-运行时/ch7-rt-build.md)
+        - [ch7-rt-openhands](大模型LLM/05.Harness工程/课程/07-运行时/ch7-rt-openhands.md)
+        - [ch7-rt-principles](大模型LLM/05.Harness工程/课程/07-运行时/ch7-rt-principles.md)
+      - 📁 08 状态持久化
+        - [ch8-state](大模型LLM/05.Harness工程/课程/08-状态持久化/ch8-state.md)
+      - 📁 09 错误处理
+        - [ch9-errors](大模型LLM/05.Harness工程/课程/09-错误处理/ch9-errors.md)
+      - 📁 10 可观测
+        - [ch10-observability](大模型LLM/05.Harness工程/课程/10-可观测/ch10-observability.md)
+      - 📁 11 模型绑定
+        - [ch11-model-binding](大模型LLM/05.Harness工程/课程/11-模型绑定/ch11-model-binding.md)
+      - 📁 12 多Agent
+        - [ch12-multi-agent](大模型LLM/05.Harness工程/课程/12-多agent/ch12-multi-agent.md)
+      - 📁 13 生产化
+        - [ch13-production](大模型LLM/05.Harness工程/课程/13-生产化/ch13-production.md)
+      - 📁 14 案例深剖
+        - [case-claude-code](大模型LLM/05.Harness工程/课程/14-案例深剖/case-claude-code.md)
+        - [case-codex](大模型LLM/05.Harness工程/课程/14-案例深剖/case-codex.md)
+        - [case-deepseek](大模型LLM/05.Harness工程/课程/14-案例深剖/case-deepseek.md)
+        - [case-multica](大模型LLM/05.Harness工程/课程/14-案例深剖/case-multica.md)
+        - [case-openhands](大模型LLM/05.Harness工程/课程/14-案例深剖/case-openhands.md)
+      - 📁 15 收尾
+        - [appendix](大模型LLM/05.Harness工程/课程/15-收尾/appendix.md)
+        - [build-capstone](大模型LLM/05.Harness工程/课程/15-收尾/build-capstone.md)
+        - [synthesis](大模型LLM/05.Harness工程/课程/15-收尾/synthesis.md)
       - [index](大模型LLM/05.Harness工程/课程/index.md)
-      - [intro](大模型LLM/05.Harness工程/课程/intro.md)
-      - [lifecycle](大模型LLM/05.Harness工程/课程/lifecycle.md)
-      - [synthesis](大模型LLM/05.Harness工程/课程/synthesis.md)
 - 📁 工具武器库
   - 📁 动态追踪技术Tracing
     - [eBPF技术](工具武器库/动态追踪技术Tracing/eBPF技术.md)
