@@ -21,6 +21,56 @@
   - 📁 04.应用
     - [关于GEO优化Generative-Engine-Optimization](大模型LLM/04.应用/关于GEO优化Generative-Engine-Optimization.md)
     - [白嫖huggingface的API](大模型LLM/04.应用/白嫖huggingface的API.md)
+  - 📁 05.Harness工程
+    - 📁 Tinyharness
+        - 📁   pycache  
+      - 📁 Tests
+        - 📁   pycache  
+      - 📁 Th
+        - 📁   pycache  
+      - 📁 Workspace
+        - 📁   pycache  
+        - [AGENTS](大模型LLM/05.Harness工程/tinyharness/workspace/AGENTS.md)
+      - [README](大模型LLM/05.Harness工程/tinyharness/README.md)
+    - 📁 课程
+      - [appendix](大模型LLM/05.Harness工程/课程/appendix.md)
+      - [build-capstone](大模型LLM/05.Harness工程/课程/build-capstone.md)
+      - [case-claude-code](大模型LLM/05.Harness工程/课程/case-claude-code.md)
+      - [case-codex](大模型LLM/05.Harness工程/课程/case-codex.md)
+      - [case-deepseek](大模型LLM/05.Harness工程/课程/case-deepseek.md)
+      - [case-multica](大模型LLM/05.Harness工程/课程/case-multica.md)
+      - [case-openhands](大模型LLM/05.Harness工程/课程/case-openhands.md)
+      - [ch10-observability](大模型LLM/05.Harness工程/课程/ch10-observability.md)
+      - [ch11-model-binding](大模型LLM/05.Harness工程/课程/ch11-model-binding.md)
+      - [ch12-multi-agent](大模型LLM/05.Harness工程/课程/ch12-multi-agent.md)
+      - [ch13-production](大模型LLM/05.Harness工程/课程/ch13-production.md)
+      - [ch2-loop-build](大模型LLM/05.Harness工程/课程/ch2-loop-build.md)
+      - [ch2-loop-claude-code](大模型LLM/05.Harness工程/课程/ch2-loop-claude-code.md)
+      - [ch2-loop-openhands](大模型LLM/05.Harness工程/课程/ch2-loop-openhands.md)
+      - [ch2-loop-paradigms](大模型LLM/05.Harness工程/课程/ch2-loop-paradigms.md)
+      - [ch3-io-build](大模型LLM/05.Harness工程/课程/ch3-io-build.md)
+      - [ch3-io-reliability](大模型LLM/05.Harness工程/课程/ch3-io-reliability.md)
+      - [ch3-io-streaming](大模型LLM/05.Harness工程/课程/ch3-io-streaming.md)
+      - [ch4-tools-aci](大模型LLM/05.Harness工程/课程/ch4-tools-aci.md)
+      - [ch4-tools-build](大模型LLM/05.Harness工程/课程/ch4-tools-build.md)
+      - [ch4-tools-claude-code](大模型LLM/05.Harness工程/课程/ch4-tools-claude-code.md)
+      - [ch4-tools-deepseek](大模型LLM/05.Harness工程/课程/ch4-tools-deepseek.md)
+      - [ch5-ctx-build](大模型LLM/05.Harness工程/课程/ch5-ctx-build.md)
+      - [ch5-ctx-compact](大模型LLM/05.Harness工程/课程/ch5-ctx-compact.md)
+      - [ch5-ctx-principles](大模型LLM/05.Harness工程/课程/ch5-ctx-principles.md)
+      - [ch5-ctx-systemprompt](大模型LLM/05.Harness工程/课程/ch5-ctx-systemprompt.md)
+      - [ch6-perm-build](大模型LLM/05.Harness工程/课程/ch6-perm-build.md)
+      - [ch6-perm-codex](大模型LLM/05.Harness工程/课程/ch6-perm-codex.md)
+      - [ch6-perm-principles](大模型LLM/05.Harness工程/课程/ch6-perm-principles.md)
+      - [ch7-rt-build](大模型LLM/05.Harness工程/课程/ch7-rt-build.md)
+      - [ch7-rt-openhands](大模型LLM/05.Harness工程/课程/ch7-rt-openhands.md)
+      - [ch7-rt-principles](大模型LLM/05.Harness工程/课程/ch7-rt-principles.md)
+      - [ch8-state](大模型LLM/05.Harness工程/课程/ch8-state.md)
+      - [ch9-errors](大模型LLM/05.Harness工程/课程/ch9-errors.md)
+      - [index](大模型LLM/05.Harness工程/课程/index.md)
+      - [intro](大模型LLM/05.Harness工程/课程/intro.md)
+      - [lifecycle](大模型LLM/05.Harness工程/课程/lifecycle.md)
+      - [synthesis](大模型LLM/05.Harness工程/课程/synthesis.md)
 - 📁 工具武器库
   - 📁 动态追踪技术Tracing
     - [eBPF技术](工具武器库/动态追踪技术Tracing/eBPF技术.md)
